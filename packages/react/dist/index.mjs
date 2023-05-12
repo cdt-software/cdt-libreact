@@ -90,5 +90,11 @@ var colors = {
   error900: "#C80000"
 };
 
-// src/index.ts
-console.log(colors);
+// src/index.tsx
+import { jsx } from "react/jsx-runtime";
+function App() {
+  return /* @__PURE__ */ jsx("h1", { style: { color: colors.secondaryColor.beige50 }, children: "Ol\xE1 mundo!" });
+}
+export {
+  App
+};

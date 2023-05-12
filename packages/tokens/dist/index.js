@@ -22,6 +22,7 @@ var src_exports = {};
 __export(src_exports, {
   colors: () => colors,
   fontSizes: () => fontSizes,
+  fontWeights: () => fontWeights,
   fonts: () => fonts,
   lineHeights: () => lineHeights,
   media: () => media,
@@ -37,50 +38,44 @@ var colors = {
   black: "#000000",
   linkActive: "#1A0DAB",
   linkVisited: "#681DA8",
-  primary: {
-    blue50: "#E3F2FD",
-    blue100: "#BBDEFB",
-    blue200: "#90CAF9",
-    blue300: "#64B5F6",
-    blue400: "#42A5F5 ",
-    blue500: "#2196F3",
-    blue600: "#1E88E5 ",
-    blue700: "#1976D2",
-    blue800: "#1565C0",
-    blue900: "#1565C0",
-    A100: "#82B1FF",
-    A200: "#448AFF",
-    A400: "#2979FF",
-    A700: "#2962FF"
-  },
-  secondaryColor: {
-    beige50: "#FCFAF6",
-    beige100: "#F9F4EC",
-    beige200: "#F2EAD9",
-    beige300: "#E9DABD",
-    beige400: "#DAC7A1",
-    beige500: "#B2A180",
-    beige600: "#9C8D70",
-    beige700: "#867960",
-    beige800: "#6F6550",
-    beige900: "#413C30"
-  },
-  tertiaryColor: {
-    amber50: "#FFF8E1",
-    amber100: "#FFECB3",
-    amber200: "#FFE082",
-    amber300: "#FFD54F",
-    amber400: "#FFCA28",
-    amber500: "#FFC107",
-    amber600: "#FFB300",
-    amber700: "#FFA000",
-    amber800: "#FF8F00",
-    amber900: "#FF6F00",
-    A100: "#FFE57F",
-    A200: "#FFD740",
-    A400: "#FFC400",
-    A700: "#FFAB00"
-  },
+  blue50: "#E3F2FD",
+  blue100: "#BBDEFB",
+  blue200: "#90CAF9",
+  blue300: "#64B5F6",
+  blue400: "#42A5F5 ",
+  blue500: "#2196F3",
+  blue600: "#1E88E5 ",
+  blue700: "#1976D2",
+  blue800: "#1565C0",
+  blue900: "#1565C0",
+  blueA100: "#82B1FF",
+  blueA200: "#448AFF",
+  blueA400: "#2979FF",
+  blueA700: "#2962FF",
+  beige50: "#FCFAF6",
+  beige100: "#F9F4EC",
+  beige200: "#F2EAD9",
+  beige300: "#E9DABD",
+  beige400: "#DAC7A1",
+  beige500: "#B2A180",
+  beige600: "#9C8D70",
+  beige700: "#867960",
+  beige800: "#6F6550",
+  beige900: "#413C30",
+  amber50: "#FFF8E1",
+  amber100: "#FFECB3",
+  amber200: "#FFE082",
+  amber300: "#FFD54F",
+  amber400: "#FFCA28",
+  amber500: "#FFC107",
+  amber600: "#FFB300",
+  amber700: "#FFA000",
+  amber800: "#FF8F00",
+  amber900: "#FF6F00",
+  amberA100: "#FFE57F",
+  amberA200: "#FFD740",
+  amberA400: "#FFC400",
+  amberA700: "#FFAB00",
   grayRiver50: "#EBEEF3",
   grayRiver100: "#CED5DE",
   grayRiver200: "#B0B9C6",
@@ -179,6 +174,13 @@ var fontSizes = {
   "9xl": "6rem"
 };
 
+// src/font-weights.ts
+var fontWeights = {
+  regular: "400",
+  medium: "500",
+  bold: "700"
+};
+
 // src/line-heights.ts
 var lineHeights = {
   shorter: "125%",
@@ -189,7 +191,7 @@ var lineHeights = {
 
 // src/shadows.ts
 var shadows = {
-  "shadow": "-4px -4px 10px 0px #000000, 4px 4px 6px 0px #000000;",
+  shadow: "-4px -4px 10px 0px #000000, 4px 4px 6px 0px #000000;",
   "shadow-md": "4px 3px 20px 4px #000000, 2px 2px 4px 0px #000000, 4px 4px 10px 0px #000000",
   "shadow-lg": "0rem 0.5rem 1rem rgba(0, 0, 0, 0.15)",
   "shadow-xl": "0rem 1rem 1rem 0rem rgba(0, 0, 0, 0.15)"
@@ -198,6 +200,7 @@ var shadows = {
 0 && (module.exports = {
   colors,
   fontSizes,
+  fontWeights,
   fonts,
   lineHeights,
   media,

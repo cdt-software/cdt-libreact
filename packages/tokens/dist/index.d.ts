@@ -3,50 +3,44 @@ declare const colors: {
     black: string;
     linkActive: string;
     linkVisited: string;
-    primary: {
-        blue50: string;
-        blue100: string;
-        blue200: string;
-        blue300: string;
-        blue400: string;
-        blue500: string;
-        blue600: string;
-        blue700: string;
-        blue800: string;
-        blue900: string;
-        A100: string;
-        A200: string;
-        A400: string;
-        A700: string;
-    };
-    secondaryColor: {
-        beige50: string;
-        beige100: string;
-        beige200: string;
-        beige300: string;
-        beige400: string;
-        beige500: string;
-        beige600: string;
-        beige700: string;
-        beige800: string;
-        beige900: string;
-    };
-    tertiaryColor: {
-        amber50: string;
-        amber100: string;
-        amber200: string;
-        amber300: string;
-        amber400: string;
-        amber500: string;
-        amber600: string;
-        amber700: string;
-        amber800: string;
-        amber900: string;
-        A100: string;
-        A200: string;
-        A400: string;
-        A700: string;
-    };
+    blue50: string;
+    blue100: string;
+    blue200: string;
+    blue300: string;
+    blue400: string;
+    blue500: string;
+    blue600: string;
+    blue700: string;
+    blue800: string;
+    blue900: string;
+    blueA100: string;
+    blueA200: string;
+    blueA400: string;
+    blueA700: string;
+    beige50: string;
+    beige100: string;
+    beige200: string;
+    beige300: string;
+    beige400: string;
+    beige500: string;
+    beige600: string;
+    beige700: string;
+    beige800: string;
+    beige900: string;
+    amber50: string;
+    amber100: string;
+    amber200: string;
+    amber300: string;
+    amber400: string;
+    amber500: string;
+    amber600: string;
+    amber700: string;
+    amber800: string;
+    amber900: string;
+    amberA100: string;
+    amberA200: string;
+    amberA400: string;
+    amberA700: string;
     grayRiver50: string;
     grayRiver100: string;
     grayRiver200: string;
@@ -140,6 +134,12 @@ declare const fontSizes: {
     '9xl': string;
 };
 
+declare const fontWeights: {
+    regular: string;
+    medium: string;
+    bold: string;
+};
+
 declare const lineHeights: {
     shorter: string;
     short: string;
@@ -154,4 +154,4 @@ declare const shadows: {
     'shadow-xl': string;
 };
 
-export { colors, fontSizes, fonts, lineHeights, media, radii, shadows, space };
+export { colors, fontSizes, fontWeights, fonts, lineHeights, media, radii, shadows, space };
