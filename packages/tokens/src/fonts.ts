@@ -1,5 +1,4 @@
 export const fonts = {
-    default: 'Segoe UI, sans-serif',
-    code: 'monospace',
+  default: 'Segoe UI, sans-serif',
+  code: 'monospace',
 }
-  
