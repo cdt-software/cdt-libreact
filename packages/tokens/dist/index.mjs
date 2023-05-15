@@ -114,6 +114,8 @@ var radii = {
   sm: "6px",
   md: "8px",
   lg: "16px",
+  xl: "20px",
+  "2xl": "24px",
   full: "99999px"
 };
 
