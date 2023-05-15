@@ -1,15 +1,37 @@
+import { ComponentProps } from 'react'
+
 import { styled } from './styles'
 
-const Button = styled('button', {
+export const Button = styled('button', {
+    height: 52,
+    backgroundColor: '$blue800',
     fontFamily: '$default',
-    backgroundColor: '$blueA100',
-    borderRadius: '$md',
-    padding: '$2xl',
-    width: '$2xl'
+    fontWeight: '$semiBold',
+    color: '$white',
+    borderRadius: 56,
+    padding: '$md $xl',
+    width: '$2xl',
+    border: 0,
+    cursor: 'pointer',
+
+    variants: {
+        size: {
+            small: {
+                minWidth: "100%",
+                fontSize: '$md',
+            },
+            big: {
+                minWidth: 358,
+                fontSize: '$md',
+            }
+        }
+    },
+
+
+    defaultVariants: {
+        size: 'big'
+    }
 })
 
-export function App() {
-    return (
-        <Button>Olá mundo!</Button>
-    )
-}
+export type ButtonProps = ComponentProps<typeof Button>
+

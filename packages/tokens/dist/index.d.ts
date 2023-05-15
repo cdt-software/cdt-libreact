@@ -137,6 +137,7 @@ declare const fontSizes: {
 declare const fontWeights: {
     regular: string;
     medium: string;
+    semiBold: string;
     bold: string;
 };
 

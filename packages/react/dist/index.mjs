@@ -152,6 +152,7 @@ var fontSizes = {
 var fontWeights = {
   regular: "400",
   medium: "500",
+  semiBold: "600",
   bold: "700"
 };
 var lineHeights = {
@@ -197,17 +198,33 @@ var {
 });
 
 // src/index.tsx
-import { jsx } from "react/jsx-runtime";
 var Button = styled("button", {
+  height: 52,
+  backgroundColor: "$blue800",
   fontFamily: "$default",
-  backgroundColor: "$blueA100",
-  borderRadius: "$md",
-  padding: "$2xl",
-  width: "$2xl"
+  fontWeight: "$semiBold",
+  color: "$white",
+  borderRadius: 56,
+  padding: "$md $xl",
+  width: "$2xl",
+  border: 0,
+  cursor: "pointer",
+  variants: {
+    size: {
+      small: {
+        minWidth: "100%",
+        fontSize: "$md"
+      },
+      big: {
+        minWidth: 358,
+        fontSize: "$md"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "big"
+  }
 });
-function App() {
-  return /* @__PURE__ */ jsx(Button, { children: "Ol\xE1 mundo!" });
-}
 export {
-  App
+  Button
 };

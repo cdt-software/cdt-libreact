@@ -1,7 +1,7 @@
 export const colors = {
   white: '#FFFFFF',
   black: '#000000',
-
+  
   linkActive: '#1A0DAB',
   linkVisited: '#681DA8',
 
