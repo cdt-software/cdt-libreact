@@ -17,6 +17,18 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 
 // ../tokens/dist/index.mjs
 var colors = {
@@ -369,10 +381,71 @@ var Button = styled("button", {
     variant: "primary"
   }
 });
+
+// src/components/TextInput/styles.ts
+var TextInputContainer = styled("div", {
+  position: "relative",
+  width: 382,
+  height: 50
+});
+var Input = styled("input", {
+  width: "100%",
+  height: 50,
+  padding: "0px 16px",
+  border: "1px solid $gray400",
+  borderRadius: 12,
+  outline: "none",
+  fontSize: "$sm",
+  transition: "0.2s",
+  color: "$gray700",
+  fontFamily: "$default",
+  "&:valid ~ span": {
+    translate: "0px -36px",
+    fontSize: "$sm",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus ~ span": {
+    color: "$blue800",
+    translate: "0px -36px",
+    fontSize: "$md",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus": {
+    border: "1px solid $blue800"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  }
+});
+var Span = styled("span", {
+  position: "absolute",
+  left: "16px",
+  top: "50%",
+  translate: "0 -50%",
+  fontSize: "$md",
+  color: "$gray700",
+  pointerEvents: "none",
+  transition: "0.2s",
+  fontFamily: "$default",
+  fontWeight: "$semiBold"
+});
+
+// src/components/TextInput/index.tsx
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+function TextInput(_a) {
+  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+  return /* @__PURE__ */ jsxs2(TextInputContainer, { children: [
+    /* @__PURE__ */ jsx2(Input, __spreadProps(__spreadValues({}, props), { required: true })),
+    /* @__PURE__ */ jsx2(Span, { children: "E-mail" })
+  ] });
+}
 export {
   Avatar2 as Avatar,
   Box,
   Button,
   Heading,
-  Text
+  Text,
+  TextInput
 };
