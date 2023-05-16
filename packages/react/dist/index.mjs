@@ -441,11 +441,72 @@ function TextInput(_a) {
     /* @__PURE__ */ jsx2(Span, { children: "E-mail" })
   ] });
 }
+
+// src/components/TextArea/styles.ts
+var TextAreaContainer = styled("div", {
+  position: "relative",
+  width: 600,
+  height: 110
+});
+var Textarea = styled("textarea", {
+  width: "100%",
+  minHeight: 80,
+  padding: "20px 16px",
+  border: "1px solid $gray400",
+  borderRadius: 12,
+  outline: "none",
+  fontSize: "$sm",
+  transition: "0.2s",
+  color: "$gray700",
+  fontFamily: "$default",
+  "&:valid ~ span": {
+    translate: "0px -39px",
+    fontSize: "$sm",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus ~ span": {
+    color: "$blue800",
+    translate: "0px -39px",
+    fontSize: "$md",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus": {
+    outline: "none",
+    border: "1px solid $blue800"
+  },
+  "&:disabled": {
+    opacity: "0.6",
+    cursor: "not-allowed"
+  }
+});
+var Span2 = styled("span", {
+  position: "absolute",
+  left: "16px",
+  top: "25%",
+  fontSize: "$md",
+  color: "$gray700",
+  pointerEvents: "none",
+  transition: "0.2s",
+  fontFamily: "$default",
+  fontWeight: "$semiBold"
+});
+
+// src/components/TextArea/index.tsx
+import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
+function TextArea() {
+  return /* @__PURE__ */ jsxs3(TextAreaContainer, { children: [
+    /* @__PURE__ */ jsx3(Textarea, { required: true }),
+    /* @__PURE__ */ jsx3(Span2, { children: "E-mail" })
+  ] });
+}
 export {
   Avatar2 as Avatar,
   Box,
   Button,
   Heading,
   Text,
+  TextArea,
   TextInput
 };

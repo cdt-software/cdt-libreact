@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Box, TextInput, TextInputProps} from '@cdt-ui/react'
+import { Box, TextArea, TextAreaProps } from '@cdt-ui/react'
 
 export default {
-    title: 'Form/Text Input',
-    component: TextInput,
+    title: 'Form/Text Area',
+    component: TextArea,
     args: {},
     decorators: [
         (Story) => {
@@ -14,11 +14,11 @@ export default {
             )
         }
     ]
-} as Meta<TextInputProps>
+} as Meta<TextAreaProps>
 
-export const Primary: StoryObj<TextInputProps> = {}
+export const Primary: StoryObj<TextAreaProps> = {}
 
-export const Disabled: StoryObj<TextInputProps> = {
+export const Disabled: StoryObj<TextAreaProps> = {
     args: {
         disabled: true
     }
