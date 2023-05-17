@@ -62,9 +62,9 @@ __export(src_exports, {
   Avatar: () => Avatar2,
   Box: () => Box,
   Button: () => Button,
+  Checkbox: () => Checkbox2,
   Heading: () => Heading,
   Text: () => Text,
-  TextArea: () => TextArea,
   TextInput: () => TextInput
 });
 module.exports = __toCommonJS(src_exports);
@@ -481,72 +481,73 @@ function TextInput(_a) {
   ] });
 }
 
-// src/components/TextArea/styles.ts
-var TextAreaContainer = styled("div", {
-  position: "relative",
-  width: 600,
-  height: 110
-});
-var Textarea = styled("textarea", {
-  width: "100%",
-  minHeight: 80,
-  padding: "20px 16px",
+// src/components/Checkbox/index.tsx
+var import_solid2 = require("@heroicons/react/24/solid");
+
+// src/components/Checkbox/styles.ts
+var Checkbox = __toESM(require("@radix-ui/react-checkbox"));
+var CheckboxContainer = styled(Checkbox.Root, {
+  all: "unset",
+  width: 24,
+  height: 24,
+  backgroundColor: "$white",
+  borderRadius: "$xs",
+  lineHeight: 0,
+  cursor: "pointer",
+  overflow: "hidden",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   border: "1px solid $gray400",
-  borderRadius: 12,
-  outline: "none",
-  fontSize: "$sm",
-  transition: "0.2s",
-  color: "$gray700",
-  fontFamily: "$default",
-  "&:valid ~ span": {
-    translate: "0px -39px",
-    fontSize: "$sm",
-    fontWeight: "$semiBold",
-    background: "$white"
-  },
-  "&:focus ~ span": {
-    color: "$blue800",
-    translate: "0px -39px",
-    fontSize: "$md",
-    fontWeight: "$semiBold",
-    background: "$white"
+  '&[data-state="checked"]': {
+    backgroundColor: "$blue800"
   },
   "&:focus": {
-    outline: "none",
-    border: "1px solid $blue800"
-  },
-  "&:disabled": {
-    opacity: "0.6",
-    cursor: "not-allowed"
+    border: "2px solid $blue800"
   }
 });
-var Span2 = styled("span", {
-  position: "absolute",
-  left: "16px",
-  top: "25%",
-  fontSize: "$md",
-  color: "$gray700",
-  pointerEvents: "none",
-  transition: "0.2s",
-  fontFamily: "$default",
-  fontWeight: "$semiBold"
+var slideIn = keyframes({
+  from: {
+    transform: "translateY(-100%)"
+  },
+  to: {
+    transform: "translateY(0)"
+  }
+});
+var slideOut = keyframes({
+  from: {
+    transform: "translateY(0)"
+  },
+  to: {
+    transform: "translateY(-100%)"
+  }
+});
+var CheckboxIndicator = styled(Checkbox.Indicator, {
+  color: "$white",
+  width: 16,
+  height: 16,
+  '&[data-state="checked"]': {
+    animation: `${slideIn} 200ms ease-out`
+  },
+  '&[data-state="unchecked"]': {
+    animation: `${slideOut} 200ms ease-out`
+  }
 });
 
-// src/components/TextArea/index.tsx
+// src/components/Checkbox/index.tsx
 var import_jsx_runtime3 = require("react/jsx-runtime");
-function TextArea() {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(TextAreaContainer, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Textarea, { required: true }),
-    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Span2, { children: "E-mail" })
-  ] });
+function Checkbox2(_a) {
+  var props = __objRest(_a, []);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_solid2.CheckIcon, {}) }) })) });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
   Box,
   Button,
+  Checkbox,
   Heading,
   Text,
-  TextArea,
   TextInput
 });

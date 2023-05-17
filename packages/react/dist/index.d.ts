@@ -4,6 +4,7 @@ import * as react from 'react';
 import { ComponentProps, ElementType } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as Avatar$1 from '@radix-ui/react-avatar';
+import * as Checkbox$1 from '@radix-ui/react-checkbox';
 
 declare const Box: _stitches_react_types_styled_component.StyledComponent<"div", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1725,7 +1726,7 @@ interface TextInputProps extends ComponentProps<typeof Input> {
 }
 declare function TextInput({ prefix, ...props }: TextInputProps): react_jsx_runtime.JSX.Element;
 
-declare const Textarea: _stitches_react_types_styled_component.StyledComponent<"textarea", {}, {}, _stitches_react_types_css_util.CSS<{}, {
+declare const CheckboxContainer: _stitches_react_types_styled_component.StyledComponent<react.ForwardRefExoticComponent<Checkbox$1.CheckboxProps & react.RefAttributes<HTMLButtonElement>>, {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
         white: string;
         black: string;
@@ -2007,8 +2008,8 @@ declare const Textarea: _stitches_react_types_styled_component.StyledComponent<"
     zIndex: "zIndices";
 }, {}>>;
 
-declare function TextArea(): react_jsx_runtime.JSX.Element;
-interface TextAreaProps extends ComponentProps<typeof Textarea> {
+interface CheckboxProps extends ComponentProps<typeof CheckboxContainer> {
 }
+declare function Checkbox({ ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
-export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Heading, HeadingProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps };
+export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Text, TextInput, TextInputProps, TextProps };

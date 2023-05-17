@@ -442,71 +442,72 @@ function TextInput(_a) {
   ] });
 }
 
-// src/components/TextArea/styles.ts
-var TextAreaContainer = styled("div", {
-  position: "relative",
-  width: 600,
-  height: 110
-});
-var Textarea = styled("textarea", {
-  width: "100%",
-  minHeight: 80,
-  padding: "20px 16px",
+// src/components/Checkbox/index.tsx
+import { CheckIcon } from "@heroicons/react/24/solid";
+
+// src/components/Checkbox/styles.ts
+import * as Checkbox from "@radix-ui/react-checkbox";
+var CheckboxContainer = styled(Checkbox.Root, {
+  all: "unset",
+  width: 24,
+  height: 24,
+  backgroundColor: "$white",
+  borderRadius: "$xs",
+  lineHeight: 0,
+  cursor: "pointer",
+  overflow: "hidden",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   border: "1px solid $gray400",
-  borderRadius: 12,
-  outline: "none",
-  fontSize: "$sm",
-  transition: "0.2s",
-  color: "$gray700",
-  fontFamily: "$default",
-  "&:valid ~ span": {
-    translate: "0px -39px",
-    fontSize: "$sm",
-    fontWeight: "$semiBold",
-    background: "$white"
-  },
-  "&:focus ~ span": {
-    color: "$blue800",
-    translate: "0px -39px",
-    fontSize: "$md",
-    fontWeight: "$semiBold",
-    background: "$white"
+  '&[data-state="checked"]': {
+    backgroundColor: "$blue800"
   },
   "&:focus": {
-    outline: "none",
-    border: "1px solid $blue800"
-  },
-  "&:disabled": {
-    opacity: "0.6",
-    cursor: "not-allowed"
+    border: "2px solid $blue800"
   }
 });
-var Span2 = styled("span", {
-  position: "absolute",
-  left: "16px",
-  top: "25%",
-  fontSize: "$md",
-  color: "$gray700",
-  pointerEvents: "none",
-  transition: "0.2s",
-  fontFamily: "$default",
-  fontWeight: "$semiBold"
+var slideIn = keyframes({
+  from: {
+    transform: "translateY(-100%)"
+  },
+  to: {
+    transform: "translateY(0)"
+  }
+});
+var slideOut = keyframes({
+  from: {
+    transform: "translateY(0)"
+  },
+  to: {
+    transform: "translateY(-100%)"
+  }
+});
+var CheckboxIndicator = styled(Checkbox.Indicator, {
+  color: "$white",
+  width: 16,
+  height: 16,
+  '&[data-state="checked"]': {
+    animation: `${slideIn} 200ms ease-out`
+  },
+  '&[data-state="unchecked"]': {
+    animation: `${slideOut} 200ms ease-out`
+  }
 });
 
-// src/components/TextArea/index.tsx
-import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
-function TextArea() {
-  return /* @__PURE__ */ jsxs3(TextAreaContainer, { children: [
-    /* @__PURE__ */ jsx3(Textarea, { required: true }),
-    /* @__PURE__ */ jsx3(Span2, { children: "E-mail" })
-  ] });
+// src/components/Checkbox/index.tsx
+import { Fragment, jsx as jsx3 } from "react/jsx-runtime";
+function Checkbox2(_a) {
+  var props = __objRest(_a, []);
+  return /* @__PURE__ */ jsx3(Fragment, { children: /* @__PURE__ */ jsx3(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ jsx3(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ jsx3(CheckIcon, {}) }) })) });
 }
 export {
   Avatar2 as Avatar,
   Box,
   Button,
+  Checkbox2 as Checkbox,
   Heading,
   Text,
-  TextArea,
   TextInput
 };

@@ -1,13 +1,13 @@
 import { ComponentProps } from "react";
 import { TextAreaContainer, Textarea, Span } from "./styles";
 
-export function TextArea() {
+export interface TextAreaProps extends ComponentProps<typeof Textarea> { }
+
+export function TextArea({ ...props }: TextAreaProps) {
     return (
         <TextAreaContainer>
-            <Textarea required />
-            <Span>E-mail</Span>
+            <Textarea {...props} required />
+            <Span>Description</Span>
         </TextAreaContainer>
     )
 }
-
-export interface TextAreaProps extends ComponentProps<typeof Textarea> {}
