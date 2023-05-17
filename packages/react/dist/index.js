@@ -261,6 +261,7 @@ var Box = styled("div", {
   border: "none",
   color: "$black"
 });
+Box.displayName = "Box";
 
 // src/components/Text.tsx
 var Text = styled("p", {
@@ -289,6 +290,7 @@ var Text = styled("p", {
     size: "md"
   }
 });
+Text.displayName = "Text";
 
 // src/components/Heading.tsx
 var Heading = styled("h2", {
@@ -312,6 +314,7 @@ var Heading = styled("h2", {
     size: "md"
   }
 });
+Heading.displayName = "Heading";
 
 // src/components/Avatar/styles.ts
 var Avatar = __toESM(require("@radix-ui/react-avatar"));
@@ -354,6 +357,7 @@ function Avatar2(props) {
     /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_solid.UserIcon, {}) })
   ] });
 }
+Avatar2.displayName = "Avatar";
 
 // src/components/Button.tsx
 var Button = styled("button", {
@@ -420,6 +424,7 @@ var Button = styled("button", {
     variant: "primary"
   }
 });
+Button.displayName = "Button";
 
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
@@ -480,6 +485,7 @@ function TextInput(_a) {
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Span, { children: "E-mail" })
   ] });
 }
+TextInput.displayName = "TextInput";
 
 // src/components/Checkbox/index.tsx
 var import_solid2 = require("@heroicons/react/24/solid");
@@ -541,6 +547,7 @@ function Checkbox2(_a) {
   var props = __objRest(_a, []);
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_solid2.CheckIcon, {}) }) })) });
 }
+Checkbox2.displayName = "Checkbox";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,

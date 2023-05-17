@@ -222,6 +222,7 @@ var Box = styled("div", {
   border: "none",
   color: "$black"
 });
+Box.displayName = "Box";
 
 // src/components/Text.tsx
 var Text = styled("p", {
@@ -250,6 +251,7 @@ var Text = styled("p", {
     size: "md"
   }
 });
+Text.displayName = "Text";
 
 // src/components/Heading.tsx
 var Heading = styled("h2", {
@@ -273,6 +275,7 @@ var Heading = styled("h2", {
     size: "md"
   }
 });
+Heading.displayName = "Heading";
 
 // src/components/Avatar/styles.ts
 import * as Avatar from "@radix-ui/react-avatar";
@@ -315,6 +318,7 @@ function Avatar2(props) {
     /* @__PURE__ */ jsx(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ jsx(UserIcon, {}) })
   ] });
 }
+Avatar2.displayName = "Avatar";
 
 // src/components/Button.tsx
 var Button = styled("button", {
@@ -381,6 +385,7 @@ var Button = styled("button", {
     variant: "primary"
   }
 });
+Button.displayName = "Button";
 
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
@@ -441,6 +446,7 @@ function TextInput(_a) {
     /* @__PURE__ */ jsx2(Span, { children: "E-mail" })
   ] });
 }
+TextInput.displayName = "TextInput";
 
 // src/components/Checkbox/index.tsx
 import { CheckIcon } from "@heroicons/react/24/solid";
@@ -502,6 +508,7 @@ function Checkbox2(_a) {
   var props = __objRest(_a, []);
   return /* @__PURE__ */ jsx3(Fragment, { children: /* @__PURE__ */ jsx3(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ jsx3(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ jsx3(CheckIcon, {}) }) })) });
 }
+Checkbox2.displayName = "Checkbox";
 export {
   Avatar2 as Avatar,
   Box,
