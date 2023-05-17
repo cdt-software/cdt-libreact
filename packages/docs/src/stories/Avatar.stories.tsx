@@ -4,7 +4,17 @@ import { Avatar, AvatarProps } from '@cdt-ui/react'
 export default {
     title: 'Data display/Avatar',
     component: Avatar,
-    args: {}
+    args: {
+        src: '',
+        alt: 'Nome do usuário'
+    },
+    argTypes: {
+        src: {
+            control: {
+                type: 'text'
+            }
+        }
+    }
 } as Meta<AvatarProps>
 
 export const Primary: StoryObj<AvatarProps> = {}

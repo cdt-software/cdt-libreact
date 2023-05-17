@@ -10,6 +10,13 @@ export default {
                 <Text>Nome da página atual</Text>
             </>
         )
+    },
+    argTypes: {
+        children: {
+            control: {
+                type: null
+            }
+        }
     }
 } as Meta<BoxProps>
 

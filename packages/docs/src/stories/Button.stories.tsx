@@ -7,7 +7,41 @@ export default {
     title: 'Form/Button',
     component: Button,
     args: {
-        children: 'Entrar'
+        children: 'Entrar',
+        variant: 'primary',
+        size: 'md',
+        disabled: false,
+    },
+    argTypes: {
+        variant: {
+            options: ['primary', 'secondary', 'tertiary'],
+            control: {
+                type: 'inline-radio'
+            }
+        },
+        
+        children: {
+            control: {
+                type: null
+            }
+        },
+
+        size: {
+            options: ['full', 'md'],
+            control: {
+                type: 'inline-radio'
+            }
+        },
+
+        disabled: {
+            control: {
+                type: 'boolean'
+            }
+        },
+
+        onClick: {
+            action: 'click',
+        }
     }
 } as Meta<ButtonProps>
 

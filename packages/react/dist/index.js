@@ -65,6 +65,7 @@ __export(src_exports, {
   Checkbox: () => Checkbox2,
   Heading: () => Heading,
   Text: () => Text,
+  TextArea: () => TextArea,
   TextInput: () => TextInput
 });
 module.exports = __toCommonJS(src_exports);
@@ -487,6 +488,68 @@ function TextInput(_a) {
 }
 TextInput.displayName = "TextInput";
 
+// src/components/TextArea/styles.ts
+var TextAreaContainer = styled("div", {
+  position: "relative",
+  width: 600,
+  height: 110
+});
+var Textarea = styled("textarea", {
+  width: "100%",
+  minHeight: 80,
+  padding: "20px 16px",
+  border: "1px solid $gray400",
+  borderRadius: 12,
+  outline: "none",
+  fontSize: "$sm",
+  transition: "0.2s",
+  color: "$gray700",
+  fontFamily: "$default",
+  "&:valid ~ span": {
+    translate: "0px -39px",
+    fontSize: "$sm",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus ~ span": {
+    color: "$blue800",
+    translate: "0px -39px",
+    fontSize: "$md",
+    fontWeight: "$semiBold",
+    background: "$white"
+  },
+  "&:focus": {
+    outline: "none",
+    border: "1px solid $blue800"
+  },
+  "&:disabled": {
+    opacity: "0.6",
+    cursor: "not-allowed"
+  }
+});
+var Span2 = styled("span", {
+  position: "absolute",
+  left: "16px",
+  top: "25%",
+  fontSize: "$md",
+  color: "$gray700",
+  pointerEvents: "none",
+  transition: "0.2s",
+  fontFamily: "$default",
+  fontWeight: "$semiBold"
+});
+
+// src/components/TextArea/index.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+function TextArea(_a) {
+  var props = __objRest(_a, []);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(TextAreaContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Textarea, __spreadProps(__spreadValues({}, props), { required: true })),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Span2, { children: "Description" })
+  ] });
+}
+TextArea.displayName = "TextArea";
+
 // src/components/Checkbox/index.tsx
 var import_solid2 = require("@heroicons/react/24/solid");
 
@@ -542,10 +605,10 @@ var CheckboxIndicator = styled(Checkbox.Indicator, {
 });
 
 // src/components/Checkbox/index.tsx
-var import_jsx_runtime3 = require("react/jsx-runtime");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function Checkbox2(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_solid2.CheckIcon, {}) }) })) });
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_solid2.CheckIcon, {}) }) })) });
 }
 Checkbox2.displayName = "Checkbox";
 // Annotate the CommonJS export names for ESM import in node:
@@ -556,5 +619,6 @@ Checkbox2.displayName = "Checkbox";
   Checkbox,
   Heading,
   Text,
+  TextArea,
   TextInput
 });
