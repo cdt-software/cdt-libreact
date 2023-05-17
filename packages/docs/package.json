@@ -32,6 +32,7 @@
     "@cdt-ui/tokens": "*",
     "@cdt-ui/ts-config": "*",
     "@heroicons/react": "^2.0.18",
+    "@storybook/addon-a11y": "^7.0.12",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
