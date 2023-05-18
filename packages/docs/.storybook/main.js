@@ -16,11 +16,12 @@ const config = {
   },
   viteFinal: (config, {configType}) => {
     if(configType === 'PRODUCTION') {
-      config.base = '/cdt-libreact/'
+      config.base = '/cdt-libreact/' 
 
     }
     return config
   }
 };
 export default config;
+
 
