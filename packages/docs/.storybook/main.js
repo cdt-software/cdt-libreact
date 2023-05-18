@@ -16,7 +16,8 @@ const config = {
   },
   viteFinal: (config, {configType}) => {
     if(configType === 'PRODUCTION') {
-      config.base = '/cdt-libreact/'
+      config.base = '/cdt_libreact/'
+
     }
     return config
   }
