@@ -71,7 +71,6 @@ export const Button = styled('button', {
         }
     },
 
-
     defaultVariants: {
         size: 'md',
         variant: 'primary'
