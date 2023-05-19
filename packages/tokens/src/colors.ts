@@ -5,6 +5,8 @@ export const colors = {
   linkActive: '#1A0DAB',
   linkVisited: '#681DA8',
 
+  test: "#ffff",
+
   blue50: '#E3F2FD',
   blue100: '#BBDEFB',
   blue200: '#90CAF9',
