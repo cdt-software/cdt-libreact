@@ -66,7 +66,15 @@ __export(src_exports, {
   Heading: () => Heading,
   Text: () => Text,
   TextArea: () => TextArea,
-  TextInput: () => TextInput
+  TextInput: () => TextInput,
+  config: () => config,
+  createTheme: () => createTheme,
+  css: () => css,
+  getCssText: () => getCssText,
+  globalCss: () => globalCss,
+  keyframes: () => keyframes,
+  styled: () => styled,
+  theme: () => theme
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -76,6 +84,7 @@ var colors = {
   black: "#000000",
   linkActive: "#1A0DAB",
   linkVisited: "#681DA8",
+  test: "#ffff",
   blue50: "#E3F2FD",
   blue100: "#BBDEFB",
   blue200: "#90CAF9",
@@ -427,11 +436,29 @@ var Button = styled("button", {
 });
 Button.displayName = "Button";
 
+// src/components/TextInput/index.tsx
+var import_react2 = require("react");
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   position: "relative",
   width: 382,
-  height: 50
+  height: 50,
+  variants: {
+    size: {
+      sm: {
+        width: "100%",
+        height: 50
+      },
+      md: {
+        width: 382,
+        height: 50
+      }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
 });
 var Input = styled("input", {
   width: "100%",
@@ -479,13 +506,13 @@ var Span = styled("span", {
 
 // src/components/TextInput/index.tsx
 var import_jsx_runtime2 = require("react/jsx-runtime");
-function TextInput(_a) {
-  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+var TextInput = (0, import_react2.forwardRef)((_a, ref) => {
+  var _b = _a, { title } = _b, props = __objRest(_b, ["title"]);
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, __spreadProps(__spreadValues({}, props), { required: true })),
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Span, { children: "E-mail" })
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, __spreadProps(__spreadValues({ ref }, props), { required: true })),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Span, { children: title ? title : "description" })
   ] });
-}
+});
 TextInput.displayName = "TextInput";
 
 // src/components/TextArea/styles.ts
@@ -572,7 +599,7 @@ var CheckboxContainer = styled(Checkbox.Root, {
   '&[data-state="checked"]': {
     backgroundColor: "$blue800"
   },
-  "&:focus": {
+  '&:focus, &[data-state="checked"]': {
     border: "2px solid $blue800"
   }
 });
@@ -620,5 +647,13 @@ Checkbox2.displayName = "Checkbox";
   Heading,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  config,
+  createTheme,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  styled,
+  theme
 });

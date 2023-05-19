@@ -36,6 +36,7 @@ var colors = {
   black: "#000000",
   linkActive: "#1A0DAB",
   linkVisited: "#681DA8",
+  test: "#ffff",
   blue50: "#E3F2FD",
   blue100: "#BBDEFB",
   blue200: "#90CAF9",
@@ -387,11 +388,29 @@ var Button = styled("button", {
 });
 Button.displayName = "Button";
 
+// src/components/TextInput/index.tsx
+import { forwardRef } from "react";
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   position: "relative",
   width: 382,
-  height: 50
+  height: 50,
+  variants: {
+    size: {
+      sm: {
+        width: "100%",
+        height: 50
+      },
+      md: {
+        width: 382,
+        height: 50
+      }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
 });
 var Input = styled("input", {
   width: "100%",
@@ -439,13 +458,13 @@ var Span = styled("span", {
 
 // src/components/TextInput/index.tsx
 import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
-function TextInput(_a) {
-  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+var TextInput = forwardRef((_a, ref) => {
+  var _b = _a, { title } = _b, props = __objRest(_b, ["title"]);
   return /* @__PURE__ */ jsxs2(TextInputContainer, { children: [
-    /* @__PURE__ */ jsx2(Input, __spreadProps(__spreadValues({}, props), { required: true })),
-    /* @__PURE__ */ jsx2(Span, { children: "E-mail" })
+    /* @__PURE__ */ jsx2(Input, __spreadProps(__spreadValues({ ref }, props), { required: true })),
+    /* @__PURE__ */ jsx2(Span, { children: title ? title : "description" })
   ] });
-}
+});
 TextInput.displayName = "TextInput";
 
 // src/components/TextArea/styles.ts
@@ -532,7 +551,7 @@ var CheckboxContainer = styled(Checkbox.Root, {
   '&[data-state="checked"]': {
     backgroundColor: "$blue800"
   },
-  "&:focus": {
+  '&:focus, &[data-state="checked"]': {
     border: "2px solid $blue800"
   }
 });
@@ -579,5 +598,13 @@ export {
   Heading,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  config,
+  createTheme,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  styled,
+  theme
 };

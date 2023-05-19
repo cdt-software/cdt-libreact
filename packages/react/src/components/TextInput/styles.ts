@@ -1,9 +1,26 @@
 import { styled } from "../../styles";
 
-export const TextInputContainer = styled("div",{
+export const TextInputContainer = styled("div", {
     position: 'relative',
     width: 382,
-    height: 50
+    height: 50,
+
+    variants: {
+        size: {
+            sm: {
+                width: '100%',
+                height: 50
+            },
+            md: {
+                width: 382,
+                height: 50,
+            }
+        }
+    },
+
+    defaultVariants: {
+        size: 'md'
+    }
 })
 
 export const Input = styled('input', {
