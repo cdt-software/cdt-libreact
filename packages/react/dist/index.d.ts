@@ -16,7 +16,6 @@ declare const Box: _stitches_react_types_styled_component.StyledComponent<"div",
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -304,7 +303,6 @@ declare const Text: _stitches_react_types_styled_component.StyledComponent<"p", 
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -592,7 +590,6 @@ declare const Heading: _stitches_react_types_styled_component.StyledComponent<"h
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -878,7 +875,6 @@ declare const AvatarImage: _stitches_react_types_styled_component.StyledComponen
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -1171,7 +1167,6 @@ declare const Button: _stitches_react_types_styled_component.StyledComponent<"bu
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -1457,7 +1452,6 @@ declare const Input: _stitches_react_types_styled_component.StyledComponent<"inp
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -1745,7 +1739,6 @@ declare const Textarea: _stitches_react_types_styled_component.StyledComponent<"
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -2035,7 +2028,6 @@ declare const CheckboxContainer: _stitches_react_types_styled_component.StyledCo
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -2319,6 +2311,8 @@ declare namespace Checkbox {
     var displayName: string;
 }
 
+declare function Sidebar(): react_jsx_runtime.JSX.Element;
+
 declare const styled: <Type extends _stitches_react_types_util.Function | keyof JSX.IntrinsicElements | react.ComponentType<any>, Composers extends (string | _stitches_react_types_util.Function | react.ComponentType<any> | {
     [name: string]: unknown;
 })[], CSS = _stitches_react_types_css_util.CSS<{}, {
@@ -2327,7 +2321,6 @@ declare const styled: <Type extends _stitches_react_types_util.Function | keyof 
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -2619,7 +2612,6 @@ declare const styled: <Type extends _stitches_react_types_util.Function | keyof 
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -2903,7 +2895,6 @@ declare const css: <Composers extends (string | _stitches_react_types_util.Funct
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -3202,7 +3193,6 @@ declare const globalCss: <Styles extends {
             black: string;
             linkActive: string;
             linkVisited: string;
-            test: string;
             blue50: string;
             blue100: string;
             blue200: string;
@@ -3484,7 +3474,6 @@ declare const globalCss: <Styles extends {
         black: string;
         linkActive: string;
         linkVisited: string;
-        test: string;
         blue50: string;
         blue100: string;
         blue200: string;
@@ -3767,7 +3756,6 @@ declare const keyframes: (style: {
             black: string;
             linkActive: string;
             linkVisited: string;
-            test: string;
             blue50: string;
             blue100: string;
             blue200: string;
@@ -4057,7 +4045,6 @@ declare const theme: string & {
         black: _stitches_react_types_theme.Token<"black", string, "colors", "">;
         linkActive: _stitches_react_types_theme.Token<"linkActive", string, "colors", "">;
         linkVisited: _stitches_react_types_theme.Token<"linkVisited", string, "colors", "">;
-        test: _stitches_react_types_theme.Token<"test", string, "colors", "">;
         blue50: _stitches_react_types_theme.Token<"blue50", string, "colors", "">;
         blue100: _stitches_react_types_theme.Token<"blue100", string, "colors", "">;
         blue200: _stitches_react_types_theme.Token<"blue200", string, "colors", "">;
@@ -4210,7 +4197,6 @@ declare const createTheme: <Argument0 extends string | ({
         black?: string | number | boolean | undefined;
         linkActive?: string | number | boolean | undefined;
         linkVisited?: string | number | boolean | undefined;
-        test?: string | number | boolean | undefined;
         blue50?: string | number | boolean | undefined;
         blue100?: string | number | boolean | undefined;
         blue200?: string | number | boolean | undefined;
@@ -4367,7 +4353,6 @@ declare const createTheme: <Argument0 extends string | ({
         black?: string | number | boolean | undefined;
         linkActive?: string | number | boolean | undefined;
         linkVisited?: string | number | boolean | undefined;
-        test?: string | number | boolean | undefined;
         blue50?: string | number | boolean | undefined;
         blue100?: string | number | boolean | undefined;
         blue200?: string | number | boolean | undefined;
@@ -4531,7 +4516,6 @@ declare const config: {
             black: string;
             linkActive: string;
             linkVisited: string;
-            test: string;
             blue50: string;
             blue100: string;
             blue200: string;
@@ -4811,4 +4795,4 @@ declare const config: {
     utils: {};
 };
 
-export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, config, createTheme, css, getCssText, globalCss, keyframes, styled, theme };
+export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Sidebar, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, config, createTheme, css, getCssText, globalCss, keyframes, styled, theme };

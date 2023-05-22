@@ -64,6 +64,7 @@ __export(src_exports, {
   Button: () => Button,
   Checkbox: () => Checkbox2,
   Heading: () => Heading,
+  Sidebar: () => Sidebar,
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
@@ -84,7 +85,6 @@ var colors = {
   black: "#000000",
   linkActive: "#1A0DAB",
   linkVisited: "#681DA8",
-  test: "#ffff",
   blue50: "#E3F2FD",
   blue100: "#BBDEFB",
   blue200: "#90CAF9",
@@ -638,6 +638,19 @@ function Checkbox2(_a) {
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_solid2.CheckIcon, {}) }) })) });
 }
 Checkbox2.displayName = "Checkbox";
+
+// src/components/Sidebar/styles.ts
+var Aside = styled("aside", {
+  width: "300px",
+  minHeight: "100vh",
+  backgroundColor: "$gray100"
+});
+
+// src/components/Sidebar/index.tsx
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function Sidebar() {
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Aside, { children: "Sidebar" });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -645,6 +658,7 @@ Checkbox2.displayName = "Checkbox";
   Button,
   Checkbox,
   Heading,
+  Sidebar,
   Text,
   TextArea,
   TextInput,

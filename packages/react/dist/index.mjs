@@ -36,7 +36,6 @@ var colors = {
   black: "#000000",
   linkActive: "#1A0DAB",
   linkVisited: "#681DA8",
-  test: "#ffff",
   blue50: "#E3F2FD",
   blue100: "#BBDEFB",
   blue200: "#90CAF9",
@@ -590,12 +589,26 @@ function Checkbox2(_a) {
   return /* @__PURE__ */ jsx4(Fragment, { children: /* @__PURE__ */ jsx4(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ jsx4(CheckboxIndicator, { asChild: true, children: /* @__PURE__ */ jsx4(CheckIcon, {}) }) })) });
 }
 Checkbox2.displayName = "Checkbox";
+
+// src/components/Sidebar/styles.ts
+var Aside = styled("aside", {
+  width: "300px",
+  minHeight: "100vh",
+  backgroundColor: "$gray100"
+});
+
+// src/components/Sidebar/index.tsx
+import { jsx as jsx5 } from "react/jsx-runtime";
+function Sidebar() {
+  return /* @__PURE__ */ jsx5(Aside, { children: "Sidebar" });
+}
 export {
   Avatar2 as Avatar,
   Box,
   Button,
   Checkbox2 as Checkbox,
   Heading,
+  Sidebar,
   Text,
   TextArea,
   TextInput,

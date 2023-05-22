@@ -6,6 +6,7 @@ export * from './components/Button'
 export * from './components/TextInput'
 export * from './components/TextArea'
 export * from './components/Checkbox'
+export * from './components/Sidebar'
 
 export * from './styles'
 
