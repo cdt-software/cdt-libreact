@@ -590,17 +590,344 @@ function Checkbox2(_a) {
 }
 Checkbox2.displayName = "Checkbox";
 
+// src/Data/menuLinks.ts
+var menuLinks = [
+  {
+    id: 2,
+    title: "Usu\xE1rios",
+    icon: "users.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/usuarios/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/usuarios/gerenciar"
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Segmenta\xE7\xE3o",
+    icon: "fluxo.svg",
+    children: [
+      {
+        title: "Cidade",
+        href: "/segmentacao/cidade"
+      },
+      {
+        title: "Estado",
+        href: "/segmentacao/estado"
+      },
+      {
+        title: "Segmentos",
+        href: "/segmentacao/segmentos"
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Estabelecimento",
+    icon: "establishments.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/estabelecimento/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/estabelecimento/gerenciar"
+      },
+      {
+        title: "Categoria",
+        href: "/estabelecimento/categoria"
+      },
+      {
+        title: "Produto",
+        href: "/estabelecimento/produto"
+      },
+      {
+        title: "Pedidos",
+        href: "/estabelecimento/pedidos"
+      },
+      {
+        title: "Banner Estabelecimento",
+        href: "/estabelecimento/bannerEstabelecimento"
+      },
+      {
+        title: "Banner Market Place",
+        href: "/estabelecimento/bannerMarketPlace"
+      },
+      {
+        title: "Credenciais",
+        href: "/estabelecimento/credenciais"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Planos",
+    icon: "notebook.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/planos/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/planos/gerenciar"
+      },
+      {
+        title: "Voucher",
+        href: "/planos/voucher"
+      },
+      {
+        title: "Assinatura",
+        href: "/planos/assinatura"
+      }
+    ]
+  }
+];
+
+// src/components/Sidebar/NavLink.tsx
+import { useEffect, useState } from "react";
+
 // src/components/Sidebar/styles.ts
 var Aside = styled("aside", {
-  width: "300px",
+  width: "280px",
   minHeight: "100vh",
-  backgroundColor: "$gray100"
+  backgroundColor: "$white",
+  padding: "32px 0",
+  fontFamily: "$default",
+  nav: {
+    width: "100%",
+    ul: {
+      listStyle: "none",
+      padding: 0
+    }
+  }
+});
+var ContainerHeader = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: "40px",
+  padding: "0 19px",
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "9px"
+  },
+  strong: {
+    textTransform: "uppercase",
+    color: "$gray900",
+    fontWeight: "$bold",
+    fontSize: "$xs"
+  },
+  svg: {
+    width: "22px",
+    color: "$blue900"
+  }
+});
+var Li = styled("li", {
+  position: "relative",
+  height: "100%",
+  marginBottom: "40px",
+  cursor: "pointer",
+  paddingRight: "20px",
+  color: "$grayRiver600",
+  fontSize: "14px"
+});
+var ContainerTitle = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "0 11px",
+  marginLeft: "8px",
+  variants: {
+    open: {
+      true: {
+        backgroundColor: "#0D47A133",
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        borderRadius: "12px"
+      }
+    }
+  }
+});
+var ContainerIcon = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "11px",
+  variants: {
+    open: {
+      true: {
+        color: "#0D47A1"
+      }
+    }
+  }
+});
+var SectionTitle = styled("p", {
+  fontSize: "$xs",
+  fontWeight: "$semiBold",
+  color: "$grayRiver200",
+  margin: 0,
+  marginBottom: "15px",
+  padding: "0 19px",
+  textTransform: "uppercase"
+});
+var ContainerChildren = styled("div", {
+  height: "100%",
+  position: "relative",
+  variants: {
+    open: {
+      true: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        paddingTop: "18px",
+        marginLeft: "28px",
+        paddingLeft: "20px"
+      },
+      false: {
+        display: "none"
+      }
+    }
+  },
+  a: {
+    position: "relative",
+    div: {
+      position: "absolute",
+      left: "-20px",
+      top: "0%",
+      // transform: 'translateY(-50%)',
+      width: "12px",
+      height: "10px",
+      borderLeft: "2px solid #CFDAEC",
+      borderBottom: "2px solid #CFDAEC",
+      borderRadius: "0 0 0 11px"
+    }
+  }
+});
+var ChildBorder = styled("div", {
+  position: "absolute",
+  width: "100%",
+  height: "calc(100% - 18px)",
+  top: 0,
+  left: 0,
+  borderLeft: "2px solid #CFDAEC"
 });
 
+// src/components/Sidebar/NavLink.tsx
+import { ChevronDownIcon, HeartIcon } from "@heroicons/react/24/solid";
+import { Fragment as Fragment2, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function NavLink({ item }) {
+  const [open, setOpen] = useState(false);
+  const [openTitleChild, setOpenTitleChild] = useState(false);
+  const menuOpened = () => {
+    if (item == null ? void 0 : item.children) {
+      item.children.map((child) => {
+        if (child.href == "asPath") {
+          setOpen(true);
+        }
+      });
+    }
+  };
+  const menu = () => {
+    if (item == null ? void 0 : item.children) {
+      item.children.map((child) => {
+        var _a;
+        (_a = child.children) == null ? void 0 : _a.map((child2) => {
+          if (child2.href == "asPath") {
+            setOpen(true);
+            setOpenTitleChild(true);
+          }
+        });
+      });
+    }
+  };
+  useEffect(() => {
+    menuOpened();
+    menu();
+  }, []);
+  if (item.children) {
+    return /* @__PURE__ */ jsxs4(Fragment2, { children: [
+      /* @__PURE__ */ jsx5(SectionTitle, { children: "Section Title" }),
+      /* @__PURE__ */ jsxs4(Li, { children: [
+        /* @__PURE__ */ jsxs4(
+          ContainerTitle,
+          {
+            open,
+            onClick: () => setOpen(!open),
+            children: [
+              /* @__PURE__ */ jsxs4(
+                ContainerIcon,
+                {
+                  open,
+                  className: " flex items-center justify-between gap-3 w-full h-4",
+                  children: [
+                    /* @__PURE__ */ jsx5(HeartIcon, { width: 20 }),
+                    /* @__PURE__ */ jsx5("span", { children: item.title })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsx5("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx5(
+                ChevronDownIcon,
+                {
+                  width: 15,
+                  style: open ? {
+                    color: "#0D47A1"
+                  } : {
+                    color: "#B0B9C6"
+                  }
+                }
+              ) })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxs4(
+          ContainerChildren,
+          {
+            open,
+            children: [
+              /* @__PURE__ */ jsx5(ChildBorder, {}),
+              item.children.map((child, index) => /* @__PURE__ */ jsxs4("a", { children: [
+                /* @__PURE__ */ jsx5("div", {}),
+                /* @__PURE__ */ jsx5("span", { children: child.title })
+              ] }, index))
+            ]
+          }
+        )
+      ] })
+    ] });
+  } else {
+    return /* @__PURE__ */ jsx5("li", { className: "mb-10 cursor-pointer hover:text-red pr-5", children: /* @__PURE__ */ jsx5("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ jsx5("div", { className: "flex items-center justify-between gap-3", children: /* @__PURE__ */ jsx5("a", { href: "/", children: /* @__PURE__ */ jsx5("span", { className: "text-sm text-gray-400 hover:text-red", children: item.title }) }) }) }) });
+  }
+}
+
 // src/components/Sidebar/index.tsx
-import { jsx as jsx5 } from "react/jsx-runtime";
+import { RocketLaunchIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
 function Sidebar() {
-  return /* @__PURE__ */ jsx5(Aside, { children: "Sidebar" });
+  return /* @__PURE__ */ jsxs5(Aside, { children: [
+    /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
+      /* @__PURE__ */ jsxs5("div", { children: [
+        /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
+        /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
+      ] }),
+      /* @__PURE__ */ jsx6(Bars3Icon, {})
+    ] }),
+    /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: menuLinks.map((item, index) => {
+      return /* @__PURE__ */ jsx6(
+        NavLink,
+        {
+          item
+        },
+        index
+      );
+    }) }) })
+  ] });
 }
 export {
   Avatar2 as Avatar,

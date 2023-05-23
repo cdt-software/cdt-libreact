@@ -639,17 +639,344 @@ function Checkbox2(_a) {
 }
 Checkbox2.displayName = "Checkbox";
 
+// src/Data/menuLinks.ts
+var menuLinks = [
+  {
+    id: 2,
+    title: "Usu\xE1rios",
+    icon: "users.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/usuarios/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/usuarios/gerenciar"
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Segmenta\xE7\xE3o",
+    icon: "fluxo.svg",
+    children: [
+      {
+        title: "Cidade",
+        href: "/segmentacao/cidade"
+      },
+      {
+        title: "Estado",
+        href: "/segmentacao/estado"
+      },
+      {
+        title: "Segmentos",
+        href: "/segmentacao/segmentos"
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Estabelecimento",
+    icon: "establishments.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/estabelecimento/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/estabelecimento/gerenciar"
+      },
+      {
+        title: "Categoria",
+        href: "/estabelecimento/categoria"
+      },
+      {
+        title: "Produto",
+        href: "/estabelecimento/produto"
+      },
+      {
+        title: "Pedidos",
+        href: "/estabelecimento/pedidos"
+      },
+      {
+        title: "Banner Estabelecimento",
+        href: "/estabelecimento/bannerEstabelecimento"
+      },
+      {
+        title: "Banner Market Place",
+        href: "/estabelecimento/bannerMarketPlace"
+      },
+      {
+        title: "Credenciais",
+        href: "/estabelecimento/credenciais"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Planos",
+    icon: "notebook.svg",
+    children: [
+      {
+        title: "Adicionar",
+        href: "/planos/adicionar"
+      },
+      {
+        title: "Gerenciar",
+        href: "/planos/gerenciar"
+      },
+      {
+        title: "Voucher",
+        href: "/planos/voucher"
+      },
+      {
+        title: "Assinatura",
+        href: "/planos/assinatura"
+      }
+    ]
+  }
+];
+
+// src/components/Sidebar/NavLink.tsx
+var import_react3 = require("react");
+
 // src/components/Sidebar/styles.ts
 var Aside = styled("aside", {
-  width: "300px",
+  width: "280px",
   minHeight: "100vh",
-  backgroundColor: "$gray100"
+  backgroundColor: "$white",
+  padding: "32px 0",
+  fontFamily: "$default",
+  nav: {
+    width: "100%",
+    ul: {
+      listStyle: "none",
+      padding: 0
+    }
+  }
+});
+var ContainerHeader = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: "40px",
+  padding: "0 19px",
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "9px"
+  },
+  strong: {
+    textTransform: "uppercase",
+    color: "$gray900",
+    fontWeight: "$bold",
+    fontSize: "$xs"
+  },
+  svg: {
+    width: "22px",
+    color: "$blue900"
+  }
+});
+var Li = styled("li", {
+  position: "relative",
+  height: "100%",
+  marginBottom: "40px",
+  cursor: "pointer",
+  paddingRight: "20px",
+  color: "$grayRiver600",
+  fontSize: "14px"
+});
+var ContainerTitle = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "0 11px",
+  marginLeft: "8px",
+  variants: {
+    open: {
+      true: {
+        backgroundColor: "#0D47A133",
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        borderRadius: "12px"
+      }
+    }
+  }
+});
+var ContainerIcon = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "11px",
+  variants: {
+    open: {
+      true: {
+        color: "#0D47A1"
+      }
+    }
+  }
+});
+var SectionTitle = styled("p", {
+  fontSize: "$xs",
+  fontWeight: "$semiBold",
+  color: "$grayRiver200",
+  margin: 0,
+  marginBottom: "15px",
+  padding: "0 19px",
+  textTransform: "uppercase"
+});
+var ContainerChildren = styled("div", {
+  height: "100%",
+  position: "relative",
+  variants: {
+    open: {
+      true: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        paddingTop: "18px",
+        marginLeft: "28px",
+        paddingLeft: "20px"
+      },
+      false: {
+        display: "none"
+      }
+    }
+  },
+  a: {
+    position: "relative",
+    div: {
+      position: "absolute",
+      left: "-20px",
+      top: "0%",
+      // transform: 'translateY(-50%)',
+      width: "12px",
+      height: "10px",
+      borderLeft: "2px solid #CFDAEC",
+      borderBottom: "2px solid #CFDAEC",
+      borderRadius: "0 0 0 11px"
+    }
+  }
+});
+var ChildBorder = styled("div", {
+  position: "absolute",
+  width: "100%",
+  height: "calc(100% - 18px)",
+  top: 0,
+  left: 0,
+  borderLeft: "2px solid #CFDAEC"
 });
 
-// src/components/Sidebar/index.tsx
+// src/components/Sidebar/NavLink.tsx
+var import_solid3 = require("@heroicons/react/24/solid");
 var import_jsx_runtime5 = require("react/jsx-runtime");
+function NavLink({ item }) {
+  const [open, setOpen] = (0, import_react3.useState)(false);
+  const [openTitleChild, setOpenTitleChild] = (0, import_react3.useState)(false);
+  const menuOpened = () => {
+    if (item == null ? void 0 : item.children) {
+      item.children.map((child) => {
+        if (child.href == "asPath") {
+          setOpen(true);
+        }
+      });
+    }
+  };
+  const menu = () => {
+    if (item == null ? void 0 : item.children) {
+      item.children.map((child) => {
+        var _a;
+        (_a = child.children) == null ? void 0 : _a.map((child2) => {
+          if (child2.href == "asPath") {
+            setOpen(true);
+            setOpenTitleChild(true);
+          }
+        });
+      });
+    }
+  };
+  (0, import_react3.useEffect)(() => {
+    menuOpened();
+    menu();
+  }, []);
+  if (item.children) {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SectionTitle, { children: "Section Title" }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Li, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          ContainerTitle,
+          {
+            open,
+            onClick: () => setOpen(!open),
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+                ContainerIcon,
+                {
+                  open,
+                  className: " flex items-center justify-between gap-3 w-full h-4",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_solid3.HeartIcon, { width: 20 }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: item.title })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                import_solid3.ChevronDownIcon,
+                {
+                  width: 15,
+                  style: open ? {
+                    color: "#0D47A1"
+                  } : {
+                    color: "#B0B9C6"
+                  }
+                }
+              ) })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          ContainerChildren,
+          {
+            open,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ChildBorder, {}),
+              item.children.map((child, index) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("a", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", {}),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: child.title })
+              ] }, index))
+            ]
+          }
+        )
+      ] })
+    ] });
+  } else {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("li", { className: "mb-10 cursor-pointer hover:text-red pr-5", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex items-center justify-between gap-3", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: "/", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-sm text-gray-400 hover:text-red", children: item.title }) }) }) }) });
+  }
+}
+
+// src/components/Sidebar/index.tsx
+var import_solid4 = require("@heroicons/react/24/solid");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function Sidebar() {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Aside, { children: "Sidebar" });
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Aside, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Base 2 Launch" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("ul", { children: menuLinks.map((item, index) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        NavLink,
+        {
+          item
+        },
+        index
+      );
+    }) }) })
+  ] });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
