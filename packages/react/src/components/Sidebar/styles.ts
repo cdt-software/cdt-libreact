@@ -7,6 +7,15 @@ export const Aside = styled('aside', {
     backgroundColor: '$white',
     padding: '32px 0',
     fontFamily: '$default',
+    transition: 'width ease-out 300ms',
+
+    variants: {
+        collapse: {
+            true: {
+                width: '72px',
+            }
+        }
+    },
 
     nav: {
         width: '100%',
@@ -42,8 +51,25 @@ export const ContainerHeader = styled('div', {
 
     svg: {
         width: '22px',
+        color: '$blue900',
+    }
+})
+
+
+export const ContainerHeaderCollapse = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '30px',
+    padding: '0 27px',
+
+    svg: {
+        width: '22px',
         color: '$blue900'
     }
+})
+
+export const ButtonHamburguer = styled('div', {
+    cursor: 'pointer'
 })
 
 export const Li = styled('li', {
@@ -86,6 +112,28 @@ export const ContainerIcon = styled('div', {
                 color: '#0D47A1'
             }
         }
+    }
+})
+
+export const ContainerIconCollapse = styled('a', {
+    height: '48px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '47px',
+    padding: '0 27px',
+    transition: 'background ease-out 150ms',
+    borderRadius: '12px',
+
+    svg: {
+        width: '20px',
+        height: '20px',
+    },
+
+    '&:hover': {
+        backgroundColor: '#0D47A133',
+        borderRadius: '12px'
     }
 })
 
@@ -132,8 +180,11 @@ export const ContainerChildren = styled('div', {
             borderLeft: '2px solid #CFDAEC',
             borderBottom: '2px solid #CFDAEC',
             borderRadius: '0 0 0 11px'
-        }
+        },
 
+        '&:hover': {
+            color: '$blue800'
+        }
     }
 })
 

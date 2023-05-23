@@ -6,7 +6,8 @@ import {
     ContainerIcon,
     SectionTitle,
     ContainerChildren,
-    ChildBorder
+    ChildBorder,
+    ContainerIconCollapse
 } from "./styles";
 
 import { ChevronDownIcon, HeartIcon } from "@heroicons/react/24/solid";
@@ -23,9 +24,10 @@ interface NavLinkProps {
         id: number;
         title: string;
     }
+    collapse: boolean;
 }
 
-export function NavLink({ item }: NavLinkProps) {
+export function NavLink({ item, collapse }: NavLinkProps) {
     const [open, setOpen] = useState(false);
     const [openTitleChild, setOpenTitleChild] = useState(false)
 
@@ -58,7 +60,7 @@ export function NavLink({ item }: NavLinkProps) {
     }, []);
 
 
-    if (item.children) {
+    if (item.children && collapse == false) {
         return (
             <>
                 <SectionTitle>Section Title</SectionTitle>
@@ -67,8 +69,7 @@ export function NavLink({ item }: NavLinkProps) {
                         open={open}
                         onClick={() => setOpen(!open)}>
                         <ContainerIcon
-                            open={open}
-                            className=" flex items-center justify-between gap-3 w-full h-4">
+                            open={open}>
 
                             <HeartIcon width={20} />
 
@@ -111,16 +112,10 @@ export function NavLink({ item }: NavLinkProps) {
         );
     } else {
         return (
-            <li className="mb-10 cursor-pointer hover:text-red pr-5">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between gap-3">
-                        <a href="/">
-                            <span className="text-sm text-gray-400 hover:text-red">
-                                {item.title}
-                            </span>
-                        </a>
-                    </div>
-                </div>
+            <li>
+                <ContainerIconCollapse href="/">
+                    <HeartIcon />
+                </ContainerIconCollapse>
             </li>
         );
     }

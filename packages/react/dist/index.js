@@ -639,6 +639,9 @@ function Checkbox2(_a) {
 }
 Checkbox2.displayName = "Checkbox";
 
+// src/components/Sidebar/index.tsx
+var import_react4 = require("react");
+
 // src/Data/menuLinks.ts
 var menuLinks = [
   {
@@ -749,6 +752,14 @@ var Aside = styled("aside", {
   backgroundColor: "$white",
   padding: "32px 0",
   fontFamily: "$default",
+  transition: "width ease-out 300ms",
+  variants: {
+    collapse: {
+      true: {
+        width: "72px"
+      }
+    }
+  },
   nav: {
     width: "100%",
     ul: {
@@ -778,6 +789,19 @@ var ContainerHeader = styled("div", {
     width: "22px",
     color: "$blue900"
   }
+});
+var ContainerHeaderCollapse = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "30px",
+  padding: "0 27px",
+  svg: {
+    width: "22px",
+    color: "$blue900"
+  }
+});
+var ButtonHamburguer = styled("div", {
+  cursor: "pointer"
 });
 var Li = styled("li", {
   position: "relative",
@@ -815,6 +839,25 @@ var ContainerIcon = styled("div", {
         color: "#0D47A1"
       }
     }
+  }
+});
+var ContainerIconCollapse = styled("a", {
+  height: "48px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "47px",
+  padding: "0 27px",
+  transition: "background ease-out 150ms",
+  borderRadius: "12px",
+  svg: {
+    width: "20px",
+    height: "20px"
+  },
+  "&:hover": {
+    backgroundColor: "#0D47A133",
+    borderRadius: "12px"
   }
 });
 var SectionTitle = styled("p", {
@@ -856,6 +899,9 @@ var ContainerChildren = styled("div", {
       borderLeft: "2px solid #CFDAEC",
       borderBottom: "2px solid #CFDAEC",
       borderRadius: "0 0 0 11px"
+    },
+    "&:hover": {
+      color: "$blue800"
     }
   }
 });
@@ -871,7 +917,7 @@ var ChildBorder = styled("div", {
 // src/components/Sidebar/NavLink.tsx
 var import_solid3 = require("@heroicons/react/24/solid");
 var import_jsx_runtime5 = require("react/jsx-runtime");
-function NavLink({ item }) {
+function NavLink({ item, collapse }) {
   const [open, setOpen] = (0, import_react3.useState)(false);
   const [openTitleChild, setOpenTitleChild] = (0, import_react3.useState)(false);
   const menuOpened = () => {
@@ -900,7 +946,7 @@ function NavLink({ item }) {
     menuOpened();
     menu();
   }, []);
-  if (item.children) {
+  if (item.children && collapse == false) {
     return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SectionTitle, { children: "Section Title" }),
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Li, { children: [
@@ -914,7 +960,6 @@ function NavLink({ item }) {
                 ContainerIcon,
                 {
                   open,
-                  className: " flex items-center justify-between gap-3 w-full h-4",
                   children: [
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_solid3.HeartIcon, { width: 20 }),
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: item.title })
@@ -951,7 +996,7 @@ function NavLink({ item }) {
       ] })
     ] });
   } else {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("li", { className: "mb-10 cursor-pointer hover:text-red pr-5", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex items-center justify-between gap-3", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: "/", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-sm text-gray-400 hover:text-red", children: item.title }) }) }) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ContainerIconCollapse, { href: "/", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_solid3.HeartIcon, {}) }) });
   }
 }
 
@@ -959,24 +1004,38 @@ function NavLink({ item }) {
 var import_solid4 = require("@heroicons/react/24/solid");
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function Sidebar() {
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Aside, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Base 2 Launch" })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {})
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("ul", { children: menuLinks.map((item, index) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
-        NavLink,
-        {
-          item
-        },
-        index
-      );
-    }) }) })
-  ] });
+  const [collapse, setCollapse] = (0, import_react4.useState)(false);
+  function handleCollapse() {
+    setCollapse(!collapse);
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+    Aside,
+    {
+      collapse,
+      children: [
+        collapse ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_jsx_runtime6.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeaderCollapse, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 })
+        ] }) }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_jsx_runtime6.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeader, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Base 2 Launch" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {}) })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("ul", { children: menuLinks.map((item, index) => {
+          return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+            NavLink,
+            {
+              item,
+              collapse
+            },
+            index
+          );
+        }) }) })
+      ]
+    }
+  );
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

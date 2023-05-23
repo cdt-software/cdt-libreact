@@ -590,6 +590,9 @@ function Checkbox2(_a) {
 }
 Checkbox2.displayName = "Checkbox";
 
+// src/components/Sidebar/index.tsx
+import { useState as useState2 } from "react";
+
 // src/Data/menuLinks.ts
 var menuLinks = [
   {
@@ -700,6 +703,14 @@ var Aside = styled("aside", {
   backgroundColor: "$white",
   padding: "32px 0",
   fontFamily: "$default",
+  transition: "width ease-out 300ms",
+  variants: {
+    collapse: {
+      true: {
+        width: "72px"
+      }
+    }
+  },
   nav: {
     width: "100%",
     ul: {
@@ -729,6 +740,19 @@ var ContainerHeader = styled("div", {
     width: "22px",
     color: "$blue900"
   }
+});
+var ContainerHeaderCollapse = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "30px",
+  padding: "0 27px",
+  svg: {
+    width: "22px",
+    color: "$blue900"
+  }
+});
+var ButtonHamburguer = styled("div", {
+  cursor: "pointer"
 });
 var Li = styled("li", {
   position: "relative",
@@ -766,6 +790,25 @@ var ContainerIcon = styled("div", {
         color: "#0D47A1"
       }
     }
+  }
+});
+var ContainerIconCollapse = styled("a", {
+  height: "48px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "47px",
+  padding: "0 27px",
+  transition: "background ease-out 150ms",
+  borderRadius: "12px",
+  svg: {
+    width: "20px",
+    height: "20px"
+  },
+  "&:hover": {
+    backgroundColor: "#0D47A133",
+    borderRadius: "12px"
   }
 });
 var SectionTitle = styled("p", {
@@ -807,6 +850,9 @@ var ContainerChildren = styled("div", {
       borderLeft: "2px solid #CFDAEC",
       borderBottom: "2px solid #CFDAEC",
       borderRadius: "0 0 0 11px"
+    },
+    "&:hover": {
+      color: "$blue800"
     }
   }
 });
@@ -822,7 +868,7 @@ var ChildBorder = styled("div", {
 // src/components/Sidebar/NavLink.tsx
 import { ChevronDownIcon, HeartIcon } from "@heroicons/react/24/solid";
 import { Fragment as Fragment2, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
-function NavLink({ item }) {
+function NavLink({ item, collapse }) {
   const [open, setOpen] = useState(false);
   const [openTitleChild, setOpenTitleChild] = useState(false);
   const menuOpened = () => {
@@ -851,7 +897,7 @@ function NavLink({ item }) {
     menuOpened();
     menu();
   }, []);
-  if (item.children) {
+  if (item.children && collapse == false) {
     return /* @__PURE__ */ jsxs4(Fragment2, { children: [
       /* @__PURE__ */ jsx5(SectionTitle, { children: "Section Title" }),
       /* @__PURE__ */ jsxs4(Li, { children: [
@@ -865,7 +911,6 @@ function NavLink({ item }) {
                 ContainerIcon,
                 {
                   open,
-                  className: " flex items-center justify-between gap-3 w-full h-4",
                   children: [
                     /* @__PURE__ */ jsx5(HeartIcon, { width: 20 }),
                     /* @__PURE__ */ jsx5("span", { children: item.title })
@@ -902,32 +947,46 @@ function NavLink({ item }) {
       ] })
     ] });
   } else {
-    return /* @__PURE__ */ jsx5("li", { className: "mb-10 cursor-pointer hover:text-red pr-5", children: /* @__PURE__ */ jsx5("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ jsx5("div", { className: "flex items-center justify-between gap-3", children: /* @__PURE__ */ jsx5("a", { href: "/", children: /* @__PURE__ */ jsx5("span", { className: "text-sm text-gray-400 hover:text-red", children: item.title }) }) }) }) });
+    return /* @__PURE__ */ jsx5("li", { children: /* @__PURE__ */ jsx5(ContainerIconCollapse, { href: "/", children: /* @__PURE__ */ jsx5(HeartIcon, {}) }) });
   }
 }
 
 // src/components/Sidebar/index.tsx
 import { RocketLaunchIcon, Bars3Icon } from "@heroicons/react/24/solid";
-import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
 function Sidebar() {
-  return /* @__PURE__ */ jsxs5(Aside, { children: [
-    /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
-      /* @__PURE__ */ jsxs5("div", { children: [
-        /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
-        /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
-      ] }),
-      /* @__PURE__ */ jsx6(Bars3Icon, {})
-    ] }),
-    /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: menuLinks.map((item, index) => {
-      return /* @__PURE__ */ jsx6(
-        NavLink,
-        {
-          item
-        },
-        index
-      );
-    }) }) })
-  ] });
+  const [collapse, setCollapse] = useState2(false);
+  function handleCollapse() {
+    setCollapse(!collapse);
+  }
+  return /* @__PURE__ */ jsxs5(
+    Aside,
+    {
+      collapse,
+      children: [
+        collapse ? /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeaderCollapse, { children: [
+          /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) }),
+          /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 })
+        ] }) }) : /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
+          /* @__PURE__ */ jsxs5("div", { children: [
+            /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
+            /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
+          ] }),
+          /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) })
+        ] }) }),
+        /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: menuLinks.map((item, index) => {
+          return /* @__PURE__ */ jsx6(
+            NavLink,
+            {
+              item,
+              collapse
+            },
+            index
+          );
+        }) }) })
+      ]
+    }
+  );
 }
 export {
   Avatar2 as Avatar,
