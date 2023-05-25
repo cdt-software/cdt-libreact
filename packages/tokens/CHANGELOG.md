@@ -1,5 +1,17 @@
 # @cdt-ui/tokens
 
+## 1.1.4
+
+### Patch Changes
+
+- fix error
+
+## 1.1.3
+
+### Patch Changes
+
+- readjustment and improvements in the sidebar component
+
 ## 1.1.2
 
 ### Patch Changes

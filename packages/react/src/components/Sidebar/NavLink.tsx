@@ -109,12 +109,6 @@ export function NavLink({ item, collapse }: NavLinkProps) {
         <ContainerLinkCollapse showLinkCollapse={showLinkCollapse}>
           {
             item.children!.map((child: any, index: number) => (
-              // <a
-              //   key={index}
-              //   href={child.href}
-              // >
-              //   {child.title}
-              // </a>
               <ActiveLink
                 key={index}
                 href={child.href}

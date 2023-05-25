@@ -1019,21 +1019,13 @@ function NavLink({ item, collapse }) {
         onClick: () => setShowLinkCollapse(!showLinkCollapse),
         children: [
           /* @__PURE__ */ jsx6(HeartIcon, {}),
-          /* @__PURE__ */ jsx6(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => (
-            // <a
-            //   key={index}
-            //   href={child.href}
-            // >
-            //   {child.title}
-            // </a>
-            /* @__PURE__ */ jsx6(
-              ActiveLink,
-              {
-                href: child.href,
-                children: /* @__PURE__ */ jsx6("span", { children: child.title })
-              },
-              index
-            )
+          /* @__PURE__ */ jsx6(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ jsx6(
+            ActiveLink,
+            {
+              href: child.href,
+              children: /* @__PURE__ */ jsx6("span", { children: child.title })
+            },
+            index
           )) })
         ]
       }
