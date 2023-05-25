@@ -3,7 +3,7 @@ export const menuLinks = [
     id: 2,
     sectionTitle: 'Usuários',
     title: 'Usuários',
-    icon: 'users.svg',
+    icon: 'BookOpenIcon',
     children: [
       {
         title: 'Adicionar',

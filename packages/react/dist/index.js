@@ -640,7 +640,7 @@ function Checkbox2(_a) {
 Checkbox2.displayName = "Checkbox";
 
 // src/components/Sidebar/index.tsx
-var import_react4 = require("react");
+var import_react5 = require("react");
 
 // src/Data/menuLinks.ts
 var menuLinks = [
@@ -648,7 +648,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Usu\xE1rios",
     title: "Usu\xE1rios",
-    icon: "users.svg",
+    icon: "BookOpenIcon",
     children: [
       {
         title: "Adicionar",
@@ -747,7 +747,38 @@ var menuLinks = [
 ];
 
 // src/components/Sidebar/NavLink.tsx
+var import_react4 = require("react");
+
+// src/components/Sidebar/ActiveLink.tsx
 var import_react3 = require("react");
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function ActiveLink(_a) {
+  var _b = _a, { href, children, alertMessageToCompleteProfile = false, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "alertMessageToCompleteProfile", "shouldMatchExactHref"]);
+  const asPath = window.location.pathname;
+  let isActive = false;
+  if (shouldMatchExactHref && asPath === href) {
+    isActive = false;
+  }
+  if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
+    isActive = true;
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    "a",
+    __spreadProps(__spreadValues({
+      style: isActive ? {
+        color: "#1565C0",
+        fontWeight: "600"
+      } : {
+        color: "#57667A"
+      },
+      href
+    }, rest), {
+      children: (0, import_react3.cloneElement)(children, {
+        className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
+      })
+    })
+  );
+}
 
 // src/components/Sidebar/styles.ts
 var Aside = styled("aside", {
@@ -757,6 +788,7 @@ var Aside = styled("aside", {
   padding: "32px 0",
   fontFamily: "$default",
   transition: "width ease-out 300ms",
+  borderRight: "1px solid #EBECF0",
   variants: {
     collapse: {
       true: {
@@ -972,47 +1004,35 @@ var ChildBorder = styled("div", {
 
 // src/components/Sidebar/NavLink.tsx
 var import_solid3 = require("@heroicons/react/24/solid");
-var import_jsx_runtime5 = require("react/jsx-runtime");
+var import_outline = require("@heroicons/react/24/outline");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function NavLink({ item, collapse }) {
-  const [open, setOpen] = (0, import_react3.useState)(false);
-  const [openTitleChild, setOpenTitleChild] = (0, import_react3.useState)(false);
-  const [showLinkCollapse, setShowLinkCollapse] = (0, import_react3.useState)(false);
+  const [open, setOpen] = (0, import_react4.useState)(false);
+  const [openTitleChild, setOpenTitleChild] = (0, import_react4.useState)(false);
+  const [showLinkCollapse, setShowLinkCollapse] = (0, import_react4.useState)(false);
+  const asPath = window.location.pathname;
   const menuOpened = () => {
     if (item == null ? void 0 : item.children) {
       item.children.map((child) => {
-        if (child.href == "asPath") {
+        if (child.href == asPath) {
           setOpen(true);
         }
       });
     }
   };
-  const menu = () => {
-    if (item == null ? void 0 : item.children) {
-      item.children.map((child) => {
-        var _a;
-        (_a = child.children) == null ? void 0 : _a.map((child2) => {
-          if (child2.href == "asPath") {
-            setOpen(true);
-            setOpenTitleChild(true);
-          }
-        });
-      });
-    }
-  };
-  (0, import_react3.useEffect)(() => {
+  (0, import_react4.useEffect)(() => {
     menuOpened();
-    menu();
   }, []);
   if (collapse == false) {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SectionTitle, { children: item.sectionTitle }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Li, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ContainerIcon, { open, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_solid3.HeartIcon, { width: 20 }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: item.title })
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SectionTitle, { children: item.sectionTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Li, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerIcon, { open, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_outline.HeartIcon, { width: 20 }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: item.title })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             import_solid3.ChevronDownIcon,
             {
               width: 15,
@@ -1024,16 +1044,16 @@ function NavLink({ item, collapse }) {
             }
           ) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ContainerChildren, { open, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ChildBorder, {}),
-          item.children.map((child, index) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-            "a",
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerChildren, { open, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ChildBorder, {}),
+          item.children.map((child, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+            ActiveLink,
             {
               href: child.href,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", {}),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: child.title })
-              ]
+              children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {}),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: child.title })
+              ] })
             },
             index
           ))
@@ -1041,50 +1061,56 @@ function NavLink({ item, collapse }) {
       ] })
     ] });
   } else {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
       ContainerIconCollapse,
       {
         showLinkCollapse,
         onClick: () => setShowLinkCollapse(!showLinkCollapse),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_solid3.HeartIcon, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "a",
-            {
-              href: child.href,
-              children: child.title
-            },
-            index
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_outline.HeartIcon, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => (
+            // <a
+            //   key={index}
+            //   href={child.href}
+            // >
+            //   {child.title}
+            // </a>
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              ActiveLink,
+              {
+                href: child.href,
+                children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: child.title })
+              },
+              index
+            )
           )) })
         ]
       }
     );
   }
 }
-{
-}
 
 // src/components/Sidebar/index.tsx
 var import_solid4 = require("@heroicons/react/24/solid");
-var import_jsx_runtime6 = require("react/jsx-runtime");
+var import_jsx_runtime7 = require("react/jsx-runtime");
 function Sidebar({ links }) {
-  const [collapse, setCollapse] = (0, import_react4.useState)(false);
+  const [collapse, setCollapse] = (0, import_react5.useState)(false);
   function handleCollapse() {
     setCollapse(!collapse);
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Aside, { collapse, children: [
-    collapse ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_jsx_runtime6.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeaderCollapse, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {}) }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 })
-    ] }) }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_jsx_runtime6.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.RocketLaunchIcon, { width: 18 }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Base 2 Launch" })
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(Aside, { collapse, children: [
+    collapse ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(ContainerHeaderCollapse, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_solid4.Bars3Icon, {}) }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_solid4.RocketLaunchIcon, { width: 18 })
+    ] }) }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(ContainerHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_solid4.RocketLaunchIcon, { width: 18 }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: "Base 2 Launch" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_solid4.Bars3Icon, {}) })
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_solid4.Bars3Icon, {}) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("ul", { children: links === void 0 ? menuLinks.map((item, index) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("ul", { children: links === void 0 ? menuLinks.map((item, index) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
         NavLink,
         {
           item,
@@ -1093,7 +1119,7 @@ function Sidebar({ links }) {
         index
       );
     }) : links.map((item, index) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
         NavLink,
         {
           item,

@@ -599,7 +599,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Usu\xE1rios",
     title: "Usu\xE1rios",
-    icon: "users.svg",
+    icon: "BookOpenIcon",
     children: [
       {
         title: "Adicionar",
@@ -700,6 +700,37 @@ var menuLinks = [
 // src/components/Sidebar/NavLink.tsx
 import { useEffect, useState } from "react";
 
+// src/components/Sidebar/ActiveLink.tsx
+import { cloneElement } from "react";
+import { jsx as jsx5 } from "react/jsx-runtime";
+function ActiveLink(_a) {
+  var _b = _a, { href, children, alertMessageToCompleteProfile = false, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "alertMessageToCompleteProfile", "shouldMatchExactHref"]);
+  const asPath = window.location.pathname;
+  let isActive = false;
+  if (shouldMatchExactHref && asPath === href) {
+    isActive = false;
+  }
+  if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
+    isActive = true;
+  }
+  return /* @__PURE__ */ jsx5(
+    "a",
+    __spreadProps(__spreadValues({
+      style: isActive ? {
+        color: "#1565C0",
+        fontWeight: "600"
+      } : {
+        color: "#57667A"
+      },
+      href
+    }, rest), {
+      children: cloneElement(children, {
+        className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
+      })
+    })
+  );
+}
+
 // src/components/Sidebar/styles.ts
 var Aside = styled("aside", {
   width: "280px",
@@ -708,6 +739,7 @@ var Aside = styled("aside", {
   padding: "32px 0",
   fontFamily: "$default",
   transition: "width ease-out 300ms",
+  borderRight: "1px solid #EBECF0",
   variants: {
     collapse: {
       true: {
@@ -922,48 +954,36 @@ var ChildBorder = styled("div", {
 });
 
 // src/components/Sidebar/NavLink.tsx
-import { ChevronDownIcon, HeartIcon } from "@heroicons/react/24/solid";
-import { Fragment as Fragment2, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs4 } from "react/jsx-runtime";
 function NavLink({ item, collapse }) {
   const [open, setOpen] = useState(false);
   const [openTitleChild, setOpenTitleChild] = useState(false);
   const [showLinkCollapse, setShowLinkCollapse] = useState(false);
+  const asPath = window.location.pathname;
   const menuOpened = () => {
     if (item == null ? void 0 : item.children) {
       item.children.map((child) => {
-        if (child.href == "asPath") {
+        if (child.href == asPath) {
           setOpen(true);
         }
       });
     }
   };
-  const menu = () => {
-    if (item == null ? void 0 : item.children) {
-      item.children.map((child) => {
-        var _a;
-        (_a = child.children) == null ? void 0 : _a.map((child2) => {
-          if (child2.href == "asPath") {
-            setOpen(true);
-            setOpenTitleChild(true);
-          }
-        });
-      });
-    }
-  };
   useEffect(() => {
     menuOpened();
-    menu();
   }, []);
   if (collapse == false) {
     return /* @__PURE__ */ jsxs4(Fragment2, { children: [
-      /* @__PURE__ */ jsx5(SectionTitle, { children: item.sectionTitle }),
+      /* @__PURE__ */ jsx6(SectionTitle, { children: item.sectionTitle }),
       /* @__PURE__ */ jsxs4(Li, { children: [
         /* @__PURE__ */ jsxs4(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
           /* @__PURE__ */ jsxs4(ContainerIcon, { open, children: [
-            /* @__PURE__ */ jsx5(HeartIcon, { width: 20 }),
-            /* @__PURE__ */ jsx5("span", { children: item.title })
+            /* @__PURE__ */ jsx6(HeartIcon, { width: 20 }),
+            /* @__PURE__ */ jsx6("span", { children: item.title })
           ] }),
-          /* @__PURE__ */ jsx5("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx5(
+          /* @__PURE__ */ jsx6("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx6(
             ChevronDownIcon,
             {
               width: 15,
@@ -976,15 +996,15 @@ function NavLink({ item, collapse }) {
           ) })
         ] }),
         /* @__PURE__ */ jsxs4(ContainerChildren, { open, children: [
-          /* @__PURE__ */ jsx5(ChildBorder, {}),
-          item.children.map((child, index) => /* @__PURE__ */ jsxs4(
-            "a",
+          /* @__PURE__ */ jsx6(ChildBorder, {}),
+          item.children.map((child, index) => /* @__PURE__ */ jsx6(
+            ActiveLink,
             {
               href: child.href,
-              children: [
-                /* @__PURE__ */ jsx5("div", {}),
-                /* @__PURE__ */ jsx5("span", { children: child.title })
-              ]
+              children: /* @__PURE__ */ jsxs4(Fragment2, { children: [
+                /* @__PURE__ */ jsx6("div", {}),
+                /* @__PURE__ */ jsx6("span", { children: child.title })
+              ] })
             },
             index
           ))
@@ -998,44 +1018,50 @@ function NavLink({ item, collapse }) {
         showLinkCollapse,
         onClick: () => setShowLinkCollapse(!showLinkCollapse),
         children: [
-          /* @__PURE__ */ jsx5(HeartIcon, {}),
-          /* @__PURE__ */ jsx5(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ jsx5(
-            "a",
-            {
-              href: child.href,
-              children: child.title
-            },
-            index
+          /* @__PURE__ */ jsx6(HeartIcon, {}),
+          /* @__PURE__ */ jsx6(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => (
+            // <a
+            //   key={index}
+            //   href={child.href}
+            // >
+            //   {child.title}
+            // </a>
+            /* @__PURE__ */ jsx6(
+              ActiveLink,
+              {
+                href: child.href,
+                children: /* @__PURE__ */ jsx6("span", { children: child.title })
+              },
+              index
+            )
           )) })
         ]
       }
     );
   }
 }
-{
-}
 
 // src/components/Sidebar/index.tsx
 import { RocketLaunchIcon, Bars3Icon } from "@heroicons/react/24/solid";
-import { Fragment as Fragment3, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx7, jsxs as jsxs5 } from "react/jsx-runtime";
 function Sidebar({ links }) {
   const [collapse, setCollapse] = useState2(false);
   function handleCollapse() {
     setCollapse(!collapse);
   }
   return /* @__PURE__ */ jsxs5(Aside, { collapse, children: [
-    collapse ? /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeaderCollapse, { children: [
-      /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) }),
-      /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 })
-    ] }) }) : /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
+    collapse ? /* @__PURE__ */ jsx7(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeaderCollapse, { children: [
+      /* @__PURE__ */ jsx7(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx7(Bars3Icon, {}) }),
+      /* @__PURE__ */ jsx7(RocketLaunchIcon, { width: 18 })
+    ] }) }) : /* @__PURE__ */ jsx7(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
       /* @__PURE__ */ jsxs5("div", { children: [
-        /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
-        /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
+        /* @__PURE__ */ jsx7(RocketLaunchIcon, { width: 18 }),
+        /* @__PURE__ */ jsx7("strong", { children: "Base 2 Launch" })
       ] }),
-      /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) })
+      /* @__PURE__ */ jsx7(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx7(Bars3Icon, {}) })
     ] }) }),
-    /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: links === void 0 ? menuLinks.map((item, index) => {
-      return /* @__PURE__ */ jsx6(
+    /* @__PURE__ */ jsx7("nav", { children: /* @__PURE__ */ jsx7("ul", { children: links === void 0 ? menuLinks.map((item, index) => {
+      return /* @__PURE__ */ jsx7(
         NavLink,
         {
           item,
@@ -1044,7 +1070,7 @@ function Sidebar({ links }) {
         index
       );
     }) : links.map((item, index) => {
-      return /* @__PURE__ */ jsx6(
+      return /* @__PURE__ */ jsx7(
         NavLink,
         {
           item,

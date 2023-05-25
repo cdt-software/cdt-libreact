@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react'
+import { ActiveLink } from './ActiveLink'
 
 import {
   Li,
@@ -11,7 +12,8 @@ import {
   ContainerLinkCollapse,
 } from './styles'
 
-import { ChevronDownIcon, HeartIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { HeartIcon } from '@heroicons/react/24/outline'
 
 type Props = {
   title: string
@@ -34,33 +36,21 @@ export function NavLink({ item, collapse }: NavLinkProps) {
   const [openTitleChild, setOpenTitleChild] = useState(false)
   const [showLinkCollapse, setShowLinkCollapse] = useState(false)
 
+  const asPath = window.location.pathname
+
   const menuOpened = (): void => {
     if (item?.children) {
-      item.children.map((child: any) => {
-        if (child.href == 'asPath') {
-          setOpen(true)
+      item.children.map((child) => {
+        if (child.href == asPath) {
+          setOpen(true);
         }
-      })
+      });
     }
-  }
-
-  const menu = (): void => {
-    if (item?.children) {
-      item.children.map((child: any) => {
-        child.children?.map((child: any) => {
-          if (child.href == 'asPath') {
-            setOpen(true)
-            setOpenTitleChild(true)
-          }
-        })
-      })
-    }
-  }
+  };
 
   useEffect(() => {
-    menuOpened()
-    menu()
-  }, [])
+    menuOpened();
+  }, []);
 
   if (collapse == false) {
     return (
@@ -69,6 +59,7 @@ export function NavLink({ item, collapse }: NavLinkProps) {
         <Li>
           <ContainerTitle open={open} onClick={() => setOpen(!open)}>
             <ContainerIcon open={open}>
+
               <HeartIcon width={20} />
 
               <span>{item.title}</span>
@@ -93,13 +84,15 @@ export function NavLink({ item, collapse }: NavLinkProps) {
           <ContainerChildren open={open}>
             <ChildBorder></ChildBorder>
             {item.children!.map((child: any, index: number) => (
-              <a
+              <ActiveLink
                 key={index}
                 href={child.href}
               >
-                <div></div>
-                <span>{child.title}</span>
-              </a>
+                <>
+                  <div></div>
+                  <span>{child.title}</span>
+                </>
+              </ActiveLink>
             ))}
           </ContainerChildren>
         </Li>
@@ -116,12 +109,18 @@ export function NavLink({ item, collapse }: NavLinkProps) {
         <ContainerLinkCollapse showLinkCollapse={showLinkCollapse}>
           {
             item.children!.map((child: any, index: number) => (
-              <a
+              // <a
+              //   key={index}
+              //   href={child.href}
+              // >
+              //   {child.title}
+              // </a>
+              <ActiveLink
                 key={index}
                 href={child.href}
               >
-                {child.title}
-              </a>
+                <span>{child.title}</span>
+              </ActiveLink>
             ))
           }
         </ContainerLinkCollapse>
@@ -132,8 +131,3 @@ export function NavLink({ item, collapse }: NavLinkProps) {
   }
 }
 
-{/* <li>
-        <ContainerIconCollapse>
-          <HeartIcon />
-        </ContainerIconCollapse>
-      </li> */}

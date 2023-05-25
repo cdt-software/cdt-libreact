@@ -7,6 +7,7 @@ export const Aside = styled('aside', {
   padding: '32px 0',
   fontFamily: '$default',
   transition: 'width ease-out 300ms',
+  borderRight: '1px solid #EBECF0',
 
   variants: {
     collapse: {
@@ -187,6 +188,7 @@ export const ContainerLinkCollapse = styled('div', {
     },
   }
 })
+
 
 export const SectionTitle = styled('p', {
   fontSize: '$xs',
