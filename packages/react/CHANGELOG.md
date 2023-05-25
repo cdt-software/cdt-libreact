@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 2.0.2
+
+### Patch Changes
+
+- create component sidebar
+
 ## 2.0.1
 
 ### Patch Changes

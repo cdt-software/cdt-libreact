@@ -1,5 +1,11 @@
 # @cdt-ui/tokens
 
+## 1.1.2
+
+### Patch Changes
+
+- create component sidebar
+
 ## 1.1.1
 
 ### Patch Changes

@@ -9,7 +9,6 @@ import {
   ContainerHeaderCollapse,
 } from './styles'
 
-
 interface SidebarProps {
   links: []
 }
