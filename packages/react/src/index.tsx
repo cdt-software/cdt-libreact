@@ -9,4 +9,3 @@ export * from './components/Checkbox'
 export * from './components/Sidebar'
 
 export * from './styles'
-

@@ -597,97 +597,101 @@ import { useState as useState2 } from "react";
 var menuLinks = [
   {
     id: 2,
+    sectionTitle: "Usu\xE1rios",
     title: "Usu\xE1rios",
     icon: "users.svg",
     children: [
       {
         title: "Adicionar",
-        href: "/usuarios/adicionar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Gerenciar",
-        href: "/usuarios/gerenciar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       }
     ]
   },
   {
-    id: 3,
+    id: 2,
+    sectionTitle: "Segmentos",
     title: "Segmenta\xE7\xE3o",
     icon: "fluxo.svg",
     children: [
       {
         title: "Cidade",
-        href: "/segmentacao/cidade"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Estado",
-        href: "/segmentacao/estado"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Segmentos",
-        href: "/segmentacao/segmentos"
+        href: "/?path=/story/sidebar-sidebar--primary"
       }
     ]
   },
   {
-    id: 5,
+    id: 3,
+    sectionTitle: "Estabelecimentos",
     title: "Estabelecimento",
     icon: "establishments.svg",
     children: [
       {
         title: "Adicionar",
-        href: "/estabelecimento/adicionar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Gerenciar",
-        href: "/estabelecimento/gerenciar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Categoria",
-        href: "/estabelecimento/categoria"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Produto",
-        href: "/estabelecimento/produto"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Pedidos",
-        href: "/estabelecimento/pedidos"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Banner Estabelecimento",
-        href: "/estabelecimento/bannerEstabelecimento"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Banner Market Place",
-        href: "/estabelecimento/bannerMarketPlace"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Credenciais",
-        href: "/estabelecimento/credenciais"
+        href: "/?path=/story/sidebar-sidebar--primary"
       }
     ]
   },
   {
-    id: 6,
+    id: 4,
+    sectionTitle: "Planos",
     title: "Planos",
     icon: "notebook.svg",
     children: [
       {
         title: "Adicionar",
-        href: "/planos/adicionar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Gerenciar",
-        href: "/planos/gerenciar"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Voucher",
-        href: "/planos/voucher"
+        href: "/?path=/story/sidebar-sidebar--primary"
       },
       {
         title: "Assinatura",
-        href: "/planos/assinatura"
+        href: "/?path=/story/sidebar-sidebar--primary"
       }
     ]
   }
@@ -767,15 +771,17 @@ var ContainerTitle = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "0 11px",
+  padding: "5px 11px",
   marginLeft: "8px",
+  transition: "all ease-out 100ms",
   variants: {
     open: {
       true: {
         backgroundColor: "#0D47A133",
         paddingTop: "10px",
         paddingBottom: "10px",
-        borderRadius: "12px"
+        borderRadius: "12px",
+        transition: "all ease-out 100ms"
       }
     }
   }
@@ -792,7 +798,8 @@ var ContainerIcon = styled("div", {
     }
   }
 });
-var ContainerIconCollapse = styled("a", {
+var ContainerIconCollapse = styled("li", {
+  position: "relative",
   height: "48px",
   display: "flex",
   flexDirection: "column",
@@ -802,6 +809,17 @@ var ContainerIconCollapse = styled("a", {
   padding: "0 27px",
   transition: "background ease-out 150ms",
   borderRadius: "12px",
+  cursor: "pointer",
+  variants: {
+    showLinkCollapse: {
+      true: {
+        backgroundColor: "#0D47A133"
+      },
+      false: {
+        background: "transparent"
+      }
+    }
+  },
   svg: {
     width: "20px",
     height: "20px"
@@ -809,6 +827,42 @@ var ContainerIconCollapse = styled("a", {
   "&:hover": {
     backgroundColor: "#0D47A133",
     borderRadius: "12px"
+  }
+});
+var ContainerLinkCollapse = styled("div", {
+  position: "absolute",
+  width: 200,
+  height: "auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  right: "-205px",
+  padding: "0",
+  boxSizing: "border-box",
+  backgroundColor: "#fff",
+  boxShadow: "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px",
+  borderRadius: "6px",
+  variants: {
+    showLinkCollapse: {
+      true: {
+        display: "block"
+      },
+      false: {
+        display: "none"
+      }
+    }
+  },
+  a: {
+    display: "block",
+    position: "relative",
+    color: "$grayRiver600",
+    textDecoration: "none",
+    fontSize: "$sm",
+    padding: "10px 15px",
+    transition: "background 100ms",
+    "&:hover": {
+      backgroundColor: "#0D47A133"
+    }
   }
 });
 var SectionTitle = styled("p", {
@@ -840,6 +894,8 @@ var ContainerChildren = styled("div", {
   },
   a: {
     position: "relative",
+    color: "$grayRiver600",
+    textDecoration: "none",
     div: {
       position: "absolute",
       left: "-20px",
@@ -871,6 +927,7 @@ import { Fragment as Fragment2, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-run
 function NavLink({ item, collapse }) {
   const [open, setOpen] = useState(false);
   const [openTitleChild, setOpenTitleChild] = useState(false);
+  const [showLinkCollapse, setShowLinkCollapse] = useState(false);
   const menuOpened = () => {
     if (item == null ? void 0 : item.children) {
       item.children.map((child) => {
@@ -897,96 +954,106 @@ function NavLink({ item, collapse }) {
     menuOpened();
     menu();
   }, []);
-  if (item.children && collapse == false) {
+  if (collapse == false) {
     return /* @__PURE__ */ jsxs4(Fragment2, { children: [
-      /* @__PURE__ */ jsx5(SectionTitle, { children: "Section Title" }),
+      /* @__PURE__ */ jsx5(SectionTitle, { children: item.sectionTitle }),
       /* @__PURE__ */ jsxs4(Li, { children: [
-        /* @__PURE__ */ jsxs4(
-          ContainerTitle,
-          {
-            open,
-            onClick: () => setOpen(!open),
-            children: [
-              /* @__PURE__ */ jsxs4(
-                ContainerIcon,
-                {
-                  open,
-                  children: [
-                    /* @__PURE__ */ jsx5(HeartIcon, { width: 20 }),
-                    /* @__PURE__ */ jsx5("span", { children: item.title })
-                  ]
-                }
-              ),
-              /* @__PURE__ */ jsx5("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx5(
-                ChevronDownIcon,
-                {
-                  width: 15,
-                  style: open ? {
-                    color: "#0D47A1"
-                  } : {
-                    color: "#B0B9C6"
-                  }
-                }
-              ) })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxs4(
-          ContainerChildren,
-          {
-            open,
-            children: [
-              /* @__PURE__ */ jsx5(ChildBorder, {}),
-              item.children.map((child, index) => /* @__PURE__ */ jsxs4("a", { children: [
+        /* @__PURE__ */ jsxs4(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
+          /* @__PURE__ */ jsxs4(ContainerIcon, { open, children: [
+            /* @__PURE__ */ jsx5(HeartIcon, { width: 20 }),
+            /* @__PURE__ */ jsx5("span", { children: item.title })
+          ] }),
+          /* @__PURE__ */ jsx5("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx5(
+            ChevronDownIcon,
+            {
+              width: 15,
+              style: open ? {
+                color: "#0D47A1"
+              } : {
+                color: "#B0B9C6"
+              }
+            }
+          ) })
+        ] }),
+        /* @__PURE__ */ jsxs4(ContainerChildren, { open, children: [
+          /* @__PURE__ */ jsx5(ChildBorder, {}),
+          item.children.map((child, index) => /* @__PURE__ */ jsxs4(
+            "a",
+            {
+              href: child.href,
+              children: [
                 /* @__PURE__ */ jsx5("div", {}),
                 /* @__PURE__ */ jsx5("span", { children: child.title })
-              ] }, index))
-            ]
-          }
-        )
+              ]
+            },
+            index
+          ))
+        ] })
       ] })
     ] });
   } else {
-    return /* @__PURE__ */ jsx5("li", { children: /* @__PURE__ */ jsx5(ContainerIconCollapse, { href: "/", children: /* @__PURE__ */ jsx5(HeartIcon, {}) }) });
+    return /* @__PURE__ */ jsxs4(
+      ContainerIconCollapse,
+      {
+        showLinkCollapse,
+        onClick: () => setShowLinkCollapse(!showLinkCollapse),
+        children: [
+          /* @__PURE__ */ jsx5(HeartIcon, {}),
+          /* @__PURE__ */ jsx5(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ jsx5(
+            "a",
+            {
+              href: child.href,
+              children: child.title
+            },
+            index
+          )) })
+        ]
+      }
+    );
   }
+}
+{
 }
 
 // src/components/Sidebar/index.tsx
 import { RocketLaunchIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import { Fragment as Fragment3, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
-function Sidebar() {
+function Sidebar({ links }) {
   const [collapse, setCollapse] = useState2(false);
   function handleCollapse() {
     setCollapse(!collapse);
   }
-  return /* @__PURE__ */ jsxs5(
-    Aside,
-    {
-      collapse,
-      children: [
-        collapse ? /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeaderCollapse, { children: [
-          /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) }),
-          /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 })
-        ] }) }) : /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
-          /* @__PURE__ */ jsxs5("div", { children: [
-            /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
-            /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
-          ] }),
-          /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) })
-        ] }) }),
-        /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: menuLinks.map((item, index) => {
-          return /* @__PURE__ */ jsx6(
-            NavLink,
-            {
-              item,
-              collapse
-            },
-            index
-          );
-        }) }) })
-      ]
-    }
-  );
+  return /* @__PURE__ */ jsxs5(Aside, { collapse, children: [
+    collapse ? /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeaderCollapse, { children: [
+      /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) }),
+      /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 })
+    ] }) }) : /* @__PURE__ */ jsx6(Fragment3, { children: /* @__PURE__ */ jsxs5(ContainerHeader, { children: [
+      /* @__PURE__ */ jsxs5("div", { children: [
+        /* @__PURE__ */ jsx6(RocketLaunchIcon, { width: 18 }),
+        /* @__PURE__ */ jsx6("strong", { children: "Base 2 Launch" })
+      ] }),
+      /* @__PURE__ */ jsx6(ButtonHamburguer, { onClick: handleCollapse, children: /* @__PURE__ */ jsx6(Bars3Icon, {}) })
+    ] }) }),
+    /* @__PURE__ */ jsx6("nav", { children: /* @__PURE__ */ jsx6("ul", { children: links === void 0 ? menuLinks.map((item, index) => {
+      return /* @__PURE__ */ jsx6(
+        NavLink,
+        {
+          item,
+          collapse
+        },
+        index
+      );
+    }) : links.map((item, index) => {
+      return /* @__PURE__ */ jsx6(
+        NavLink,
+        {
+          item,
+          collapse
+        },
+        index
+      );
+    }) }) })
+  ] });
 }
 export {
   Avatar2 as Avatar,

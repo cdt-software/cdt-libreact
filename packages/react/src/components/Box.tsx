@@ -1,19 +1,19 @@
-import { ComponentProps, ElementType } from "react";
-import { styled } from "../styles";
+import { ComponentProps, ElementType } from 'react'
+import { styled } from '../styles'
 
 export const Box = styled('div', {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 39,
-    padding: '$2xl $lg',
-    backgroundColor: '$white',
-    border: 'none',
-    color: "$black",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 39,
+  padding: '$2xl $lg',
+  backgroundColor: '$white',
+  border: 'none',
+  color: '$black',
 })
 
 export interface BoxProps extends ComponentProps<typeof Box> {
-    as?: ElementType
+  as?: ElementType
 }
 
-Box.displayName = "Box"
+Box.displayName = 'Box'

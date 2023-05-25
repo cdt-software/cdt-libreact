@@ -1,100 +1,103 @@
 export const menuLinks = [
-    {
-      id: 2,
-      title: 'Usuários',
-      icon: 'users.svg',
-      children: [
-        {
-          title: 'Adicionar',
-          href: '/usuarios/adicionar',
-        },
-        {
-          title: 'Gerenciar',
-          href: '/usuarios/gerenciar',
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Segmentação',
-      icon: 'fluxo.svg',
-      children: [
-        {
-          title: 'Cidade',
-          href: '/segmentacao/cidade',
-        },
-        {
-          title: 'Estado',
-          href: '/segmentacao/estado',
-        },
-        {
-          title: 'Segmentos',
-          href: '/segmentacao/segmentos',
-        },
-      ],
-    },
+  {
+    id: 2,
+    sectionTitle: 'Usuários',
+    title: 'Usuários',
+    icon: 'users.svg',
+    children: [
+      {
+        title: 'Adicionar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Gerenciar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+    ],
+  },
+  {
+    id: 2,
+    sectionTitle: 'Segmentos',
+    title: 'Segmentação',
+    icon: 'fluxo.svg',
+    children: [
+      {
+        title: 'Cidade',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Estado',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Segmentos',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+    ],
+  },
 
-    {
-      id: 5,
-      title: 'Estabelecimento',
-      icon: 'establishments.svg',
-      children: [
-        {
-          title: 'Adicionar',
-          href: '/estabelecimento/adicionar',
-        },
-        {
-          title: 'Gerenciar',
-          href: '/estabelecimento/gerenciar',
-        },
-        {
-          title: 'Categoria',
-          href: '/estabelecimento/categoria',
-        },
-        {
-          title: 'Produto',
-          href: '/estabelecimento/produto',
-        },
-        {
-          title: 'Pedidos',
-          href: '/estabelecimento/pedidos',
-        },
-        {
-          title: 'Banner Estabelecimento',
-          href: '/estabelecimento/bannerEstabelecimento',
-        },
-        {
-          title: 'Banner Market Place',
-          href: '/estabelecimento/bannerMarketPlace',
-        },
-        {
-          title: 'Credenciais',
-          href: '/estabelecimento/credenciais',
-        },
-      ],
-    },
-    {
-      id: 6,
-      title: 'Planos',
-      icon: 'notebook.svg',
-      children: [
-        {
-          title: 'Adicionar',
-          href: '/planos/adicionar',
-        },
-        {
-          title: 'Gerenciar',
-          href: '/planos/gerenciar',
-        },
-        {
-          title: 'Voucher',
-          href: '/planos/voucher',
-        },
-        {
-          title: 'Assinatura',
-          href: '/planos/assinatura',
-        },
-      ],
-    },
-  ];
-  
+  {
+    id: 3,
+    sectionTitle: 'Estabelecimentos',
+    title: 'Estabelecimento',
+    icon: 'establishments.svg',
+    children: [
+      {
+        title: 'Adicionar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Gerenciar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Categoria',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Produto',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Pedidos',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Banner Estabelecimento',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Banner Market Place',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Credenciais',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+    ],
+  },
+  {
+    id: 4,
+    sectionTitle: 'Planos',
+    title: 'Planos',
+    icon: 'notebook.svg',
+    children: [
+      {
+        title: 'Adicionar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Gerenciar',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Voucher',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+      {
+        title: 'Assinatura',
+        href: '/?path=/story/sidebar-sidebar--primary',
+      },
+    ],
+  },
+]
