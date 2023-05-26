@@ -2316,6 +2316,8 @@ interface SidebarProps {
 }
 declare function Sidebar({ links }: SidebarProps): react_jsx_runtime.JSX.Element;
 
+declare function Topbar(): react_jsx_runtime.JSX.Element;
+
 declare const styled: <Type extends _stitches_react_types_util.Function | keyof JSX.IntrinsicElements | react.ComponentType<any>, Composers extends (string | _stitches_react_types_util.Function | react.ComponentType<any> | {
     [name: string]: unknown;
 })[], CSS = _stitches_react_types_css_util.CSS<{}, {
@@ -4798,4 +4800,4 @@ declare const config: {
     utils: {};
 };
 
-export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Sidebar, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, config, createTheme, css, getCssText, globalCss, keyframes, styled, theme };
+export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Sidebar, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, Topbar, config, createTheme, css, getCssText, globalCss, keyframes, styled, theme };

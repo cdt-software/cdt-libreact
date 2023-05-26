@@ -68,6 +68,7 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
+  Topbar: () => Topbar,
   config: () => config,
   createTheme: () => createTheme,
   css: () => css,
@@ -1122,6 +1123,27 @@ function Sidebar({ links }) {
     }) }) })
   ] });
 }
+
+// src/components/Topbar/styles.ts
+var Container = styled("div", {
+  width: "100%",
+  height: "76px",
+  backgroundColor: "#fff",
+  fontFamily: "$default",
+  padding: "$md"
+});
+var ContainerTitle2 = styled("div", {
+  h1: {
+    fontSize: "$2xl",
+    fontWeight: "$regular"
+  }
+});
+
+// src/components/Topbar/index.tsx
+var import_jsx_runtime8 = require("react/jsx-runtime");
+function Topbar() {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Container, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ContainerTitle2, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { children: "Nome da p\xE1gina atual" }) }) });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -1133,6 +1155,7 @@ function Sidebar({ links }) {
   Text,
   TextArea,
   TextInput,
+  Topbar,
   config,
   createTheme,
   css,

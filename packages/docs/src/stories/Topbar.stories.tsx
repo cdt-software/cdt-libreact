@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Sidebar } from '@cdt-ui/react'
+import { Topbar } from '@cdt-ui/react'
 
 export default {
-    title: 'Sidebar/sidebar ',
-    component: Sidebar,
+    title: 'Topbar/topbar ',
+    component: Topbar,
     args: {},
     argTypes: {}
 } as Meta

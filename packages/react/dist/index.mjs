@@ -1073,6 +1073,27 @@ function Sidebar({ links }) {
     }) }) })
   ] });
 }
+
+// src/components/Topbar/styles.ts
+var Container = styled("div", {
+  width: "100%",
+  height: "76px",
+  backgroundColor: "#fff",
+  fontFamily: "$default",
+  padding: "$md"
+});
+var ContainerTitle2 = styled("div", {
+  h1: {
+    fontSize: "$2xl",
+    fontWeight: "$regular"
+  }
+});
+
+// src/components/Topbar/index.tsx
+import { jsx as jsx8 } from "react/jsx-runtime";
+function Topbar() {
+  return /* @__PURE__ */ jsx8(Container, { children: /* @__PURE__ */ jsx8(ContainerTitle2, { children: /* @__PURE__ */ jsx8("h1", { children: "Nome da p\xE1gina atual" }) }) });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -1083,6 +1104,7 @@ export {
   Text,
   TextArea,
   TextInput,
+  Topbar,
   config,
   createTheme,
   css,
