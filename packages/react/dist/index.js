@@ -55,6 +55,26 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
 
 // src/index.tsx
 var src_exports = {};
@@ -1124,25 +1144,145 @@ function Sidebar({ links }) {
   ] });
 }
 
+// src/components/Topbar/index.tsx
+var import_react6 = require("react");
+
 // src/components/Topbar/styles.ts
 var Container = styled("div", {
   width: "100%",
   height: "76px",
   backgroundColor: "#fff",
   fontFamily: "$default",
-  padding: "$md"
+  padding: "$md",
+  margin: 0,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between"
 });
 var ContainerTitle2 = styled("div", {
+  margin: 0,
+  padding: 0,
   h1: {
+    margin: 0,
     fontSize: "$2xl",
     fontWeight: "$regular"
+  },
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    marginTop: "2px",
+    p: {
+      margin: 0,
+      padding: 0,
+      fontSize: "$xs",
+      color: "$grayRiver700",
+      "&:nth-child(3)": {
+        color: "#0D47A1"
+      }
+    }
+  }
+});
+var ContainerSearch = styled("div", {
+  width: "auto",
+  display: "flex",
+  color: "$grayRiver500",
+  p: {
+    margin: 0,
+    padding: 0,
+    fontSize: "$sm"
+  },
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    svg: {
+      cursor: "pointer"
+    },
+    span: {
+      fontSize: "12px"
+    }
+  }
+});
+var Search = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  marginLeft: "18px",
+  marginRight: "12px",
+  width: "356px",
+  Minwidth: "100%",
+  height: "40px",
+  padding: "0 15px",
+  borderRadius: "$full",
+  backgroundColor: "$gray50",
+  div: {
+    width: "100%",
+    height: "100%",
+    svg: {
+      color: "$gray500"
+    }
+  }
+});
+var Input2 = styled("input", {
+  width: "100%",
+  height: "100%",
+  background: "transparent",
+  outline: "none",
+  border: "0",
+  color: "$gray500",
+  "&::placeholder": {
+    fontSize: "$xs",
+    color: "$gray500"
   }
 });
 
 // src/components/Topbar/index.tsx
+var import_solid5 = require("@heroicons/react/24/solid");
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function Topbar() {
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Container, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ContainerTitle2, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { children: "Nome da p\xE1gina atual" }) }) });
+  const [search, setSearch] = (0, import_react6.useState)("");
+  const getProducts = (values) => __async(this, null, function* () {
+    console.log(values);
+  });
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Container, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(ContainerTitle2, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { children: "Nome da p\xE1gina atual" }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "P\xE1gina anterior" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: ">" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "P\xE1gina atual" })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(ContainerSearch, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          import_solid5.ArrowPathIcon,
+          {
+            width: 16,
+            onClick: () => console.log("atualizar"),
+            title: "Atualizar"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Atualizado h\xE1 2 horas" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Search, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_solid5.MagnifyingGlassIcon, { width: 16 }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          Input2,
+          {
+            type: "text",
+            name: "search",
+            placeholder: "Buscar",
+            className: "w-full h-full focus:outline-none  text-gray-500 text-base ",
+            value: search,
+            onChange: (e) => setSearch(e.target.value)
+          }
+        )
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Avatar2, {})
+    ] })
+  ] });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

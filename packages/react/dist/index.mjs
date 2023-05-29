@@ -29,6 +29,26 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
 
 // ../tokens/dist/index.mjs
 var colors = {
@@ -1074,25 +1094,145 @@ function Sidebar({ links }) {
   ] });
 }
 
+// src/components/Topbar/index.tsx
+import { useState as useState3 } from "react";
+
 // src/components/Topbar/styles.ts
 var Container = styled("div", {
   width: "100%",
   height: "76px",
   backgroundColor: "#fff",
   fontFamily: "$default",
-  padding: "$md"
+  padding: "$md",
+  margin: 0,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between"
 });
 var ContainerTitle2 = styled("div", {
+  margin: 0,
+  padding: 0,
   h1: {
+    margin: 0,
     fontSize: "$2xl",
     fontWeight: "$regular"
+  },
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    marginTop: "2px",
+    p: {
+      margin: 0,
+      padding: 0,
+      fontSize: "$xs",
+      color: "$grayRiver700",
+      "&:nth-child(3)": {
+        color: "#0D47A1"
+      }
+    }
+  }
+});
+var ContainerSearch = styled("div", {
+  width: "auto",
+  display: "flex",
+  color: "$grayRiver500",
+  p: {
+    margin: 0,
+    padding: 0,
+    fontSize: "$sm"
+  },
+  div: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    svg: {
+      cursor: "pointer"
+    },
+    span: {
+      fontSize: "12px"
+    }
+  }
+});
+var Search = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  marginLeft: "18px",
+  marginRight: "12px",
+  width: "356px",
+  Minwidth: "100%",
+  height: "40px",
+  padding: "0 15px",
+  borderRadius: "$full",
+  backgroundColor: "$gray50",
+  div: {
+    width: "100%",
+    height: "100%",
+    svg: {
+      color: "$gray500"
+    }
+  }
+});
+var Input2 = styled("input", {
+  width: "100%",
+  height: "100%",
+  background: "transparent",
+  outline: "none",
+  border: "0",
+  color: "$gray500",
+  "&::placeholder": {
+    fontSize: "$xs",
+    color: "$gray500"
   }
 });
 
 // src/components/Topbar/index.tsx
-import { jsx as jsx8 } from "react/jsx-runtime";
+import { ArrowPathIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { jsx as jsx8, jsxs as jsxs6 } from "react/jsx-runtime";
 function Topbar() {
-  return /* @__PURE__ */ jsx8(Container, { children: /* @__PURE__ */ jsx8(ContainerTitle2, { children: /* @__PURE__ */ jsx8("h1", { children: "Nome da p\xE1gina atual" }) }) });
+  const [search, setSearch] = useState3("");
+  const getProducts = (values) => __async(this, null, function* () {
+    console.log(values);
+  });
+  return /* @__PURE__ */ jsxs6(Container, { children: [
+    /* @__PURE__ */ jsxs6(ContainerTitle2, { children: [
+      /* @__PURE__ */ jsx8("h1", { children: "Nome da p\xE1gina atual" }),
+      /* @__PURE__ */ jsxs6("div", { children: [
+        /* @__PURE__ */ jsx8("p", { children: "P\xE1gina anterior" }),
+        /* @__PURE__ */ jsx8("p", { children: ">" }),
+        /* @__PURE__ */ jsx8("p", { children: "P\xE1gina atual" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs6(ContainerSearch, { children: [
+      /* @__PURE__ */ jsxs6("div", { children: [
+        /* @__PURE__ */ jsx8(
+          ArrowPathIcon,
+          {
+            width: 16,
+            onClick: () => console.log("atualizar"),
+            title: "Atualizar"
+          }
+        ),
+        /* @__PURE__ */ jsx8("span", { children: "Atualizado h\xE1 2 horas" })
+      ] }),
+      /* @__PURE__ */ jsx8(Search, { children: /* @__PURE__ */ jsxs6("div", { children: [
+        /* @__PURE__ */ jsx8(MagnifyingGlassIcon, { width: 16 }),
+        /* @__PURE__ */ jsx8(
+          Input2,
+          {
+            type: "text",
+            name: "search",
+            placeholder: "Buscar",
+            className: "w-full h-full focus:outline-none  text-gray-500 text-base ",
+            value: search,
+            onChange: (e) => setSearch(e.target.value)
+          }
+        )
+      ] }) }),
+      /* @__PURE__ */ jsx8(Avatar2, {})
+    ] })
+  ] });
 }
 export {
   Avatar2 as Avatar,
