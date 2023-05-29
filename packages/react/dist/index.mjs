@@ -1095,7 +1095,7 @@ function Sidebar({ links }) {
 }
 
 // src/components/Topbar/index.tsx
-import { useState as useState3 } from "react";
+import { useEffect as useEffect2, useState as useState3 } from "react";
 
 // src/components/Topbar/styles.ts
 var Container = styled("div", {
@@ -1169,6 +1169,8 @@ var Search = styled("div", {
   div: {
     width: "100%",
     height: "100%",
+    display: "flex",
+    alignItems: "center",
     svg: {
       color: "$gray500"
     }
@@ -1186,15 +1188,64 @@ var Input2 = styled("input", {
     color: "$gray500"
   }
 });
+var DeleteButton = styled("button", {
+  border: "0",
+  display: "flex",
+  alignItems: "center",
+  background: "transparent",
+  svg: {
+    "&:hover": {
+      opacity: 0.8
+    }
+  },
+  variants: {
+    items: {
+      block: {
+        display: "block"
+      },
+      hidden: {
+        display: "none"
+      }
+    }
+  }
+});
 
 // src/components/Topbar/index.tsx
-import { ArrowPathIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { jsx as jsx8, jsxs as jsxs6 } from "react/jsx-runtime";
 function Topbar() {
+  const [listProducts, setListProducts] = useState3([]);
   const [search, setSearch] = useState3("");
+  const [items, setItems] = useState3([]);
+  const [loading, setLoading] = useState3(false);
+  const handleSearch = () => {
+    if (search.length > 0) {
+      setLoading(false);
+      setItems(
+        listProducts.filter(
+          (item) => {
+            var _a, _b;
+            return ((_a = item == null ? void 0 : item.product) == null ? void 0 : _a.name.toLowerCase().includes(search.toLowerCase())) || ((_b = item == null ? void 0 : item.name) == null ? void 0 : _b.toLowerCase().includes(search.toLowerCase()));
+          }
+        )
+      );
+      setTimeout(() => {
+        setLoading(true);
+      }, 2e3);
+      return;
+    }
+    setItems([]);
+  };
   const getProducts = (values) => __async(this, null, function* () {
     console.log(values);
   });
+  const handleDeleteItems = () => {
+    setSearch("");
+    setItems([]);
+  };
+  useEffect2(() => {
+    handleSearch();
+  }, [search]);
   return /* @__PURE__ */ jsxs6(Container, { children: [
     /* @__PURE__ */ jsxs6(ContainerTitle2, { children: [
       /* @__PURE__ */ jsx8("h1", { children: "Nome da p\xE1gina atual" }),
@@ -1224,9 +1275,16 @@ function Topbar() {
             type: "text",
             name: "search",
             placeholder: "Buscar",
-            className: "w-full h-full focus:outline-none  text-gray-500 text-base ",
             value: search,
             onChange: (e) => setSearch(e.target.value)
+          }
+        ),
+        /* @__PURE__ */ jsx8(
+          DeleteButton,
+          {
+            items: search !== "" ? "block" : "hidden",
+            onClick: handleDeleteItems,
+            children: /* @__PURE__ */ jsx8(XMarkIcon, { width: 18 })
           }
         )
       ] }) }),

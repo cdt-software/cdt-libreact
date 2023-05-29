@@ -1219,6 +1219,8 @@ var Search = styled("div", {
   div: {
     width: "100%",
     height: "100%",
+    display: "flex",
+    alignItems: "center",
     svg: {
       color: "$gray500"
     }
@@ -1236,15 +1238,64 @@ var Input2 = styled("input", {
     color: "$gray500"
   }
 });
+var DeleteButton = styled("button", {
+  border: "0",
+  display: "flex",
+  alignItems: "center",
+  background: "transparent",
+  svg: {
+    "&:hover": {
+      opacity: 0.8
+    }
+  },
+  variants: {
+    items: {
+      block: {
+        display: "block"
+      },
+      hidden: {
+        display: "none"
+      }
+    }
+  }
+});
 
 // src/components/Topbar/index.tsx
 var import_solid5 = require("@heroicons/react/24/solid");
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function Topbar() {
+  const [listProducts, setListProducts] = (0, import_react6.useState)([]);
   const [search, setSearch] = (0, import_react6.useState)("");
+  const [items, setItems] = (0, import_react6.useState)([]);
+  const [loading, setLoading] = (0, import_react6.useState)(false);
+  const handleSearch = () => {
+    if (search.length > 0) {
+      setLoading(false);
+      setItems(
+        listProducts.filter(
+          (item) => {
+            var _a, _b;
+            return ((_a = item == null ? void 0 : item.product) == null ? void 0 : _a.name.toLowerCase().includes(search.toLowerCase())) || ((_b = item == null ? void 0 : item.name) == null ? void 0 : _b.toLowerCase().includes(search.toLowerCase()));
+          }
+        )
+      );
+      setTimeout(() => {
+        setLoading(true);
+      }, 2e3);
+      return;
+    }
+    setItems([]);
+  };
   const getProducts = (values) => __async(this, null, function* () {
     console.log(values);
   });
+  const handleDeleteItems = () => {
+    setSearch("");
+    setItems([]);
+  };
+  (0, import_react6.useEffect)(() => {
+    handleSearch();
+  }, [search]);
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Container, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(ContainerTitle2, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { children: "Nome da p\xE1gina atual" }),
@@ -1274,9 +1325,16 @@ function Topbar() {
             type: "text",
             name: "search",
             placeholder: "Buscar",
-            className: "w-full h-full focus:outline-none  text-gray-500 text-base ",
             value: search,
             onChange: (e) => setSearch(e.target.value)
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          DeleteButton,
+          {
+            items: search !== "" ? "block" : "hidden",
+            onClick: handleDeleteItems,
+            children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_solid5.XMarkIcon, { width: 18 })
           }
         )
       ] }) }),

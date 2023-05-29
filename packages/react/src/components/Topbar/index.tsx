@@ -1,16 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { Container, ContainerTitle, ContainerSearch, Search, Input } from "./styles"
-import { ArrowPathIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid"
+import {
+    Container,
+    ContainerTitle,
+    ContainerSearch,
+    Search,
+    Input,
+    DeleteButton
+} from "./styles"
+import { ArrowPathIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid"
 
 import { Avatar } from '../Avatar';
 
 export function Topbar() {
+    const [listProducts, setListProducts] = useState<[]>([]);
     const [search, setSearch] = useState('');
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const handleSearch = () => {
+        if (search.length > 0) {
+            setLoading(false);
+            setItems(
+                listProducts.filter((item: any) =>
+                    item?.product?.name.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase())
+                )
+            );
+
+            setTimeout(() => {
+                setLoading(true);
+            }, 2000);
+
+            return;
+        }
+        setItems([]);
+    };
 
     const getProducts = async (values: any) => {
         console.log(values)
     };
+
+    const handleDeleteItems = () => {
+        setSearch('');
+        setItems([]);
+    };
+
+    useEffect(() => {
+        handleSearch();
+    }, [search]);
 
     return (
         <Container>
@@ -34,8 +71,8 @@ export function Topbar() {
 
             <ContainerSearch>
                 <div>
-                    <ArrowPathIcon 
-                        width={16} 
+                    <ArrowPathIcon
+                        width={16}
                         onClick={() => console.log('atualizar')}
                         title='Atualizar'
                     />
@@ -50,10 +87,16 @@ export function Topbar() {
                             type="text"
                             name="search"
                             placeholder="Buscar"
-                            className="w-full h-full focus:outline-none  text-gray-500 text-base "
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
+
+                        <DeleteButton
+                            items={search !== '' ? 'block' : 'hidden'}
+                            onClick={handleDeleteItems}
+                        >
+                            <XMarkIcon width={18} />
+                        </DeleteButton>
 
                     </div>
                 </Search>

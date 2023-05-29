@@ -1,7 +1,7 @@
 import { fontWeights } from "@cdt-ui/tokens";
 import { styled } from "../../styles";
 
-export const Container = styled('div',{
+export const Container = styled('div', {
     width: '100%',
     height: '76px',
 
@@ -10,13 +10,13 @@ export const Container = styled('div',{
     padding: '$md',
     margin: 0,
     boxSizing: 'border-box',
-    
+
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between'
 })
 
-export const ContainerTitle = styled('div',{
+export const ContainerTitle = styled('div', {
     margin: 0,
     padding: 0,
 
@@ -32,7 +32,7 @@ export const ContainerTitle = styled('div',{
         gap: '8px',
         marginTop: '2px',
 
-        
+
 
         p: {
             margin: 0,
@@ -53,13 +53,13 @@ export const ContainerSearch = styled('div', {
     width: 'auto',
     display: 'flex',
     color: "$grayRiver500",
-  
+
     p: {
         margin: 0,
         padding: 0,
         fontSize: '$sm',
     },
-    
+
     div: {
         display: 'flex',
         alignItems: 'center',
@@ -90,10 +90,12 @@ export const Search = styled('div', {
     padding: '0 15px',
     borderRadius: '$full',
     backgroundColor: '$gray50',
-  
+
     div: {
         width: '100%',
         height: '100%',
+        display: 'flex',
+        alignItems: 'center',
 
         svg: {
             color: '$gray500'
@@ -112,6 +114,31 @@ export const Input = styled('input', {
     '&::placeholder': {
         fontSize: '$xs',
         color: '$gray500'
+    }
+
+})
+
+export const DeleteButton = styled('button', {
+    border: '0',
+    display: 'flex',
+    alignItems: 'center',
+    background: 'transparent',
+
+    svg: {
+        '&:hover': {
+            opacity: .8
+        }
+    },
+
+    variants: {
+        items: {
+            block: {
+                display: 'block'
+            },
+            hidden: {
+                display: 'none'
+            }
+        }
     }
 
 })
