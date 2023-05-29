@@ -78,6 +78,7 @@ export const ContainerSearch = styled('div', {
 })
 
 export const Search = styled('div', {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     marginLeft: '18px',
@@ -140,5 +141,53 @@ export const DeleteButton = styled('button', {
             }
         }
     }
+})
 
+export const Ul = styled('ul', {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    top: '40px',
+    zIndex: '999px',
+    marginTop: '10px',
+    backgroundColor: 'white',
+    boxShadow: '0px 5px 10px 2px #EBEEF3',
+    borderRadius: '0 0 5px 5px',
+    width: '290px',
+    padding: '0 16px 2px',
+    listStyle: 'none',
+
+    variants: {
+        items: {
+            block: {
+                display: 'block'
+            },
+            hidden: {
+                display: 'none'
+            }
+        }
+    },
+
+    li: {
+        textAlign: 'center',
+        fontSize: '$sm',
+
+        a: {
+            textDecoration: 'none',
+
+            div: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderBottom: '1px solid $gray500',
+                padding: '15px 0',
+                marginBottom: '8px',
+
+                p: {
+                    color: '$gray500'
+                }
+
+            }
+        }
+    }
 })

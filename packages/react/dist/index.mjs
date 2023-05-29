@@ -1156,6 +1156,7 @@ var ContainerSearch = styled("div", {
   }
 });
 var Search = styled("div", {
+  position: "relative",
   display: "flex",
   alignItems: "center",
   marginLeft: "18px",
@@ -1209,23 +1210,86 @@ var DeleteButton = styled("button", {
     }
   }
 });
+var Ul = styled("ul", {
+  position: "absolute",
+  left: "50%",
+  transform: "translateX(-50%)",
+  top: "40px",
+  zIndex: "999px",
+  marginTop: "10px",
+  backgroundColor: "white",
+  boxShadow: "0px 5px 10px 2px #EBEEF3",
+  borderRadius: "0 0 5px 5px",
+  width: "290px",
+  padding: "0 16px 2px",
+  listStyle: "none",
+  variants: {
+    items: {
+      block: {
+        display: "block"
+      },
+      hidden: {
+        display: "none"
+      }
+    }
+  },
+  li: {
+    textAlign: "center",
+    fontSize: "$sm",
+    a: {
+      textDecoration: "none",
+      div: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderBottom: "1px solid $gray500",
+        padding: "15px 0",
+        marginBottom: "8px",
+        p: {
+          color: "$gray500"
+        }
+      }
+    }
+  }
+});
 
 // src/components/Topbar/index.tsx
 import { ArrowPathIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
+
+// src/Data/dataiItems.ts
+var dataItems = [
+  {
+    id: 0,
+    title: "Title",
+    criador: "Luana",
+    date: "25/10/2023",
+    url: "/"
+  },
+  {
+    id: 1,
+    title: "Title",
+    criador: "Ricardo",
+    date: "30/10/2023",
+    url: "/"
+  }
+];
+
+// src/components/Topbar/index.tsx
 import { jsx as jsx8, jsxs as jsxs6 } from "react/jsx-runtime";
 function Topbar() {
-  const [listProducts, setListProducts] = useState3([]);
+  const [listProducts, setListProducts] = useState3(dataItems);
   const [search, setSearch] = useState3("");
-  const [items, setItems] = useState3([]);
+  const [items, setItems] = useState3(dataItems);
   const [loading, setLoading] = useState3(false);
+  console.log(listProducts);
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
       setItems(
         listProducts.filter(
           (item) => {
-            var _a, _b;
-            return ((_a = item == null ? void 0 : item.product) == null ? void 0 : _a.name.toLowerCase().includes(search.toLowerCase())) || ((_b = item == null ? void 0 : item.name) == null ? void 0 : _b.toLowerCase().includes(search.toLowerCase()));
+            var _a;
+            return (item == null ? void 0 : item.criador.toLowerCase().includes(search.toLowerCase())) || ((_a = item == null ? void 0 : item.title) == null ? void 0 : _a.toLowerCase().includes(search.toLowerCase()));
           }
         )
       );
@@ -1286,7 +1350,37 @@ function Topbar() {
             onClick: handleDeleteItems,
             children: /* @__PURE__ */ jsx8(XMarkIcon, { width: 18 })
           }
-        )
+        ),
+        items.length == 0 ? /* @__PURE__ */ jsx8(
+          Ul,
+          {
+            items: search !== "" ? "block" : "hidden",
+            children: /* @__PURE__ */ jsx8("li", { children: "N\xE3o encontrado." })
+          }
+        ) : loading ? /* @__PURE__ */ jsx8(Ul, { children: items.map((item) => {
+          return /* @__PURE__ */ jsx8(
+            "li",
+            {
+              className: "my-6 hover:bg-gray-50 p-3 cursor-pointer border-b ",
+              children: /* @__PURE__ */ jsx8("a", { href: item.url, children: /* @__PURE__ */ jsxs6("div", { children: [
+                /* @__PURE__ */ jsx8("p", { children: item.title }),
+                /* @__PURE__ */ jsx8("p", { children: item.criador }),
+                /* @__PURE__ */ jsx8("p", { children: item.date })
+              ] }) })
+            },
+            item.id
+          );
+        }) }) : /* @__PURE__ */ jsx8(Ul, { children: items.map((item) => /* @__PURE__ */ jsx8(
+          "li",
+          {
+            className: "my-6 hover:bg-gray-50 p-3 cursor-pointer",
+            children: /* @__PURE__ */ jsxs6("div", { className: "flex flex-col lg:flex-row items-center  gap-10 ", children: [
+              /* @__PURE__ */ jsx8("div", { className: "flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100" }),
+              /* @__PURE__ */ jsx8("div", { className: "w-full bg-gray-100 p-2 " })
+            ] })
+          },
+          item.id
+        )) })
       ] }) }),
       /* @__PURE__ */ jsx8(Avatar2, {})
     ] })

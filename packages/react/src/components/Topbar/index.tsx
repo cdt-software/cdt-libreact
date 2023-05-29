@@ -6,24 +6,28 @@ import {
     ContainerSearch,
     Search,
     Input,
-    DeleteButton
+    DeleteButton,
+    Ul,
 } from "./styles"
 import { ArrowPathIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid"
+import { dataItems } from '../../Data/dataiItems';
 
 import { Avatar } from '../Avatar';
 
 export function Topbar() {
-    const [listProducts, setListProducts] = useState<[]>([]);
+    const [listProducts, setListProducts] = useState(dataItems);
     const [search, setSearch] = useState('');
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(dataItems);
     const [loading, setLoading] = useState(false);
+
+    console.log(listProducts)
 
     const handleSearch = () => {
         if (search.length > 0) {
             setLoading(false);
             setItems(
                 listProducts.filter((item: any) =>
-                    item?.product?.name.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase())
+                    item?.criador.toLowerCase().includes(search.toLowerCase()) || item?.title?.toLowerCase().includes(search.toLowerCase())
                 )
             );
 
@@ -97,6 +101,62 @@ export function Topbar() {
                         >
                             <XMarkIcon width={18} />
                         </DeleteButton>
+
+                        {
+                            items.length == 0
+                                ?
+                                <Ul
+                                    items={search !== '' ? 'block' : 'hidden'}
+                                >
+                                    <li>
+                                        Não encontrado.
+                                    </li>
+                                </Ul>
+                                :
+                                (loading ? (
+                                    <Ul>
+                                        {items.map((item: any) => {
+                                            return (
+                                                <li
+                                                    key={item.id}
+                                                    className="my-6 hover:bg-gray-50 p-3 cursor-pointer border-b "
+                                                >
+                                                    <a href={item.url}>
+                                                        <div>
+                                                            <p>
+                                                                {item.title}
+                                                            </p>
+
+                                                            <p>
+                                                                {item.criador}
+                                                            </p>
+
+                                                            <p>
+                                                                {item.date}
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            )
+                                        })}
+                                    </Ul>
+                                ) : (
+                                    <Ul>
+                                        {items.map((item: any) => (
+                                            <li
+                                                key={item.id}
+                                                className="my-6 hover:bg-gray-50 p-3 cursor-pointer"
+                                            >
+                                                <div className="flex flex-col lg:flex-row items-center  gap-10 ">
+                                                    <div className="flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100"></div>
+
+                                                    <div className="w-full bg-gray-100 p-2 "></div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </Ul>
+                                ))
+                        }
 
                     </div>
                 </Search>

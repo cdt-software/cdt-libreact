@@ -1206,6 +1206,7 @@ var ContainerSearch = styled("div", {
   }
 });
 var Search = styled("div", {
+  position: "relative",
   display: "flex",
   alignItems: "center",
   marginLeft: "18px",
@@ -1259,23 +1260,86 @@ var DeleteButton = styled("button", {
     }
   }
 });
+var Ul = styled("ul", {
+  position: "absolute",
+  left: "50%",
+  transform: "translateX(-50%)",
+  top: "40px",
+  zIndex: "999px",
+  marginTop: "10px",
+  backgroundColor: "white",
+  boxShadow: "0px 5px 10px 2px #EBEEF3",
+  borderRadius: "0 0 5px 5px",
+  width: "290px",
+  padding: "0 16px 2px",
+  listStyle: "none",
+  variants: {
+    items: {
+      block: {
+        display: "block"
+      },
+      hidden: {
+        display: "none"
+      }
+    }
+  },
+  li: {
+    textAlign: "center",
+    fontSize: "$sm",
+    a: {
+      textDecoration: "none",
+      div: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderBottom: "1px solid $gray500",
+        padding: "15px 0",
+        marginBottom: "8px",
+        p: {
+          color: "$gray500"
+        }
+      }
+    }
+  }
+});
 
 // src/components/Topbar/index.tsx
 var import_solid5 = require("@heroicons/react/24/solid");
+
+// src/Data/dataiItems.ts
+var dataItems = [
+  {
+    id: 0,
+    title: "Title",
+    criador: "Luana",
+    date: "25/10/2023",
+    url: "/"
+  },
+  {
+    id: 1,
+    title: "Title",
+    criador: "Ricardo",
+    date: "30/10/2023",
+    url: "/"
+  }
+];
+
+// src/components/Topbar/index.tsx
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function Topbar() {
-  const [listProducts, setListProducts] = (0, import_react6.useState)([]);
+  const [listProducts, setListProducts] = (0, import_react6.useState)(dataItems);
   const [search, setSearch] = (0, import_react6.useState)("");
-  const [items, setItems] = (0, import_react6.useState)([]);
+  const [items, setItems] = (0, import_react6.useState)(dataItems);
   const [loading, setLoading] = (0, import_react6.useState)(false);
+  console.log(listProducts);
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
       setItems(
         listProducts.filter(
           (item) => {
-            var _a, _b;
-            return ((_a = item == null ? void 0 : item.product) == null ? void 0 : _a.name.toLowerCase().includes(search.toLowerCase())) || ((_b = item == null ? void 0 : item.name) == null ? void 0 : _b.toLowerCase().includes(search.toLowerCase()));
+            var _a;
+            return (item == null ? void 0 : item.criador.toLowerCase().includes(search.toLowerCase())) || ((_a = item == null ? void 0 : item.title) == null ? void 0 : _a.toLowerCase().includes(search.toLowerCase()));
           }
         )
       );
@@ -1336,7 +1400,37 @@ function Topbar() {
             onClick: handleDeleteItems,
             children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_solid5.XMarkIcon, { width: 18 })
           }
-        )
+        ),
+        items.length == 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          Ul,
+          {
+            items: search !== "" ? "block" : "hidden",
+            children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("li", { children: "N\xE3o encontrado." })
+          }
+        ) : loading ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Ul, { children: items.map((item) => {
+          return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+            "li",
+            {
+              className: "my-6 hover:bg-gray-50 p-3 cursor-pointer border-b ",
+              children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("a", { href: item.url, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: item.title }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: item.criador }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: item.date })
+              ] }) })
+            },
+            item.id
+          );
+        }) }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Ul, { children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          "li",
+          {
+            className: "my-6 hover:bg-gray-50 p-3 cursor-pointer",
+            children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col lg:flex-row items-center  gap-10 ", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-full bg-gray-100 p-2 " })
+            ] })
+          },
+          item.id
+        )) })
       ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Avatar2, {})
     ] })
