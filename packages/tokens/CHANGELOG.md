@@ -1,5 +1,11 @@
 # @cdt-ui/tokens
 
+## 1.1.5
+
+### Patch Changes
+
+- create component topbar
+
 ## 1.1.4
 
 ### Patch Changes

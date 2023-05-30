@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 2.0.5
+
+### Patch Changes
+
+- create component topbar
+
 ## 2.0.4
 
 ### Patch Changes

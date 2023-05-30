@@ -1,5 +1,11 @@
 # @cdt-ui/eslint-config
 
+## 1.0.4
+
+### Patch Changes
+
+- create component topbar
+
 ## 1.0.3
 
 ### Patch Changes
