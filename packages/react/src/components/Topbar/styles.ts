@@ -23,7 +23,11 @@ export const ContainerTitle = styled('div', {
     h1: {
         margin: 0,
         fontSize: '$2xl',
-        fontWeight: '$regular'
+        fontWeight: '$regular',
+
+        '@media (max-width: 600px)': {
+            fontSize: '$sm',
+        }
     },
 
     div: {
@@ -47,6 +51,8 @@ export const ContainerTitle = styled('div', {
 
         }
     }
+
+
 })
 
 export const ContainerSearch = styled('div', {
@@ -187,8 +193,8 @@ export const Ul = styled('ul', {
                     color: '$gray500'
                 }
 
-            }
-        }
+            },
+        },
     }
 })
 

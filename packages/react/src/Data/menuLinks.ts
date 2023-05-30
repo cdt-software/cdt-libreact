@@ -3,7 +3,7 @@ export const menuLinks = [
     id: 2,
     sectionTitle: 'Usuários',
     title: 'Usuários',
-    icon: 'BookOpenIcon',
+    icon: 'heart.svg',
     children: [
       {
         title: 'Adicionar',
@@ -19,7 +19,7 @@ export const menuLinks = [
     id: 2,
     sectionTitle: 'Segmentos',
     title: 'Segmentação',
-    icon: 'fluxo.svg',
+    icon: 'KeyIcon',
     children: [
       {
         title: 'Cidade',
@@ -40,7 +40,7 @@ export const menuLinks = [
     id: 3,
     sectionTitle: 'Estabelecimentos',
     title: 'Estabelecimento',
-    icon: 'establishments.svg',
+    icon: 'UserGroup',
     children: [
       {
         title: 'Adicionar',

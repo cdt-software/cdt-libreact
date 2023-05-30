@@ -15,6 +15,8 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { HeartIcon } from '@heroicons/react/24/outline'
 
+import * as Icon from '@heroicons/react/24/outline'
+
 type Props = {
   title: string
   href: string
@@ -22,16 +24,17 @@ type Props = {
 
 interface NavLinkProps {
   item: {
-    children?: Props[]
-    icon: string
-    id: number
-    title: string
+    children?: Props[];
+    icon: string;
+    id: number;
+    title: string;
     sectionTitle: string;
   }
-  collapse: boolean
+  collapse: boolean;
 }
 
 export function NavLink({ item, collapse }: NavLinkProps) {
+  const NameIcon = `${item.icon}`
   const [open, setOpen] = useState(false)
   const [openTitleChild, setOpenTitleChild] = useState(false)
   const [showLinkCollapse, setShowLinkCollapse] = useState(false)

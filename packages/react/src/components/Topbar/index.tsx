@@ -14,10 +14,15 @@ import { dataItems } from '../../Data/dataiItems';
 
 import { Avatar } from '../Avatar';
 
-export function Topbar({}) {
-    const [listProducts, setListProducts] = useState(dataItems);
+interface TopbarProps {
+    locations: any
+    pageName: string;
+}
+
+export function Topbar({ locations, pageName = "Nome da página atual" }: TopbarProps) {
+    const [listProducts, setListProducts] = useState(locations === undefined ? dataItems : locations);
     const [search, setSearch] = useState('');
-    const [items, setItems] = useState(dataItems);
+    const [items, setItems] = useState(locations === undefined ? dataItems : locations);
     const [loading, setLoading] = useState(false);
 
     const handleSearch = () => {
@@ -55,7 +60,7 @@ export function Topbar({}) {
         <Container>
             <ContainerTitle>
                 <h1>
-                    Nome da página atual
+                    {pageName}
                 </h1>
                 <div>
                     <p>
@@ -106,9 +111,9 @@ export function Topbar({}) {
                                 <Ul
                                     items={search !== '' ? 'block' : 'hidden'}
                                 >
-                                    <li>
-                                        Não encontrado.
-                                    </li>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <span>Não encontrado.</span>
+                                    </div>
                                 </Ul>
                                 :
                                 (loading ? (
