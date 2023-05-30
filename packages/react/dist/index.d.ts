@@ -2316,7 +2316,7 @@ interface SidebarProps {
 }
 declare function Sidebar({ links }: SidebarProps): react_jsx_runtime.JSX.Element;
 
-declare function Topbar(): react_jsx_runtime.JSX.Element;
+declare function Topbar({}: {}): react_jsx_runtime.JSX.Element;
 
 declare const styled: <Type extends _stitches_react_types_util.Function | keyof JSX.IntrinsicElements | react.ComponentType<any>, Composers extends (string | _stitches_react_types_util.Function | react.ComponentType<any> | {
     [name: string]: unknown;

@@ -1221,7 +1221,7 @@ var Ul = styled("ul", {
   boxShadow: "0px 5px 10px 2px #EBEEF3",
   borderRadius: "0 0 5px 5px",
   width: "290px",
-  padding: "0 16px 2px",
+  padding: "0 16px 4px",
   listStyle: "none",
   variants: {
     items: {
@@ -1276,12 +1276,11 @@ var dataItems = [
 
 // src/components/Topbar/index.tsx
 import { jsx as jsx8, jsxs as jsxs6 } from "react/jsx-runtime";
-function Topbar() {
+function Topbar({}) {
   const [listProducts, setListProducts] = useState3(dataItems);
   const [search, setSearch] = useState3("");
   const [items, setItems] = useState3(dataItems);
   const [loading, setLoading] = useState3(false);
-  console.log(listProducts);
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
@@ -1370,17 +1369,7 @@ function Topbar() {
             },
             item.id
           );
-        }) }) : /* @__PURE__ */ jsx8(Ul, { children: items.map((item) => /* @__PURE__ */ jsx8(
-          "li",
-          {
-            className: "my-6 hover:bg-gray-50 p-3 cursor-pointer",
-            children: /* @__PURE__ */ jsxs6("div", { className: "flex flex-col lg:flex-row items-center  gap-10 ", children: [
-              /* @__PURE__ */ jsx8("div", { className: "flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100" }),
-              /* @__PURE__ */ jsx8("div", { className: "w-full bg-gray-100 p-2 " })
-            ] })
-          },
-          item.id
-        )) })
+        }) }) : /* @__PURE__ */ jsx8(Ul, { children: /* @__PURE__ */ jsx8("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsx8("span", { children: "Carregando..." }) }) })
       ] }) }),
       /* @__PURE__ */ jsx8(Avatar2, {})
     ] })

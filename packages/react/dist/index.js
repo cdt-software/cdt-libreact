@@ -1271,7 +1271,7 @@ var Ul = styled("ul", {
   boxShadow: "0px 5px 10px 2px #EBEEF3",
   borderRadius: "0 0 5px 5px",
   width: "290px",
-  padding: "0 16px 2px",
+  padding: "0 16px 4px",
   listStyle: "none",
   variants: {
     items: {
@@ -1326,12 +1326,11 @@ var dataItems = [
 
 // src/components/Topbar/index.tsx
 var import_jsx_runtime8 = require("react/jsx-runtime");
-function Topbar() {
+function Topbar({}) {
   const [listProducts, setListProducts] = (0, import_react6.useState)(dataItems);
   const [search, setSearch] = (0, import_react6.useState)("");
   const [items, setItems] = (0, import_react6.useState)(dataItems);
   const [loading, setLoading] = (0, import_react6.useState)(false);
-  console.log(listProducts);
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
@@ -1420,17 +1419,7 @@ function Topbar() {
             },
             item.id
           );
-        }) }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Ul, { children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-          "li",
-          {
-            className: "my-6 hover:bg-gray-50 p-3 cursor-pointer",
-            children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col lg:flex-row items-center  gap-10 ", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100" }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-full bg-gray-100 p-2 " })
-            ] })
-          },
-          item.id
-        )) })
+        }) }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Ul, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Carregando..." }) }) })
       ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Avatar2, {})
     ] })

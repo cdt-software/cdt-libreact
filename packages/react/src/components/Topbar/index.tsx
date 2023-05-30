@@ -14,13 +14,11 @@ import { dataItems } from '../../Data/dataiItems';
 
 import { Avatar } from '../Avatar';
 
-export function Topbar() {
+export function Topbar({}) {
     const [listProducts, setListProducts] = useState(dataItems);
     const [search, setSearch] = useState('');
     const [items, setItems] = useState(dataItems);
     const [loading, setLoading] = useState(false);
-
-    console.log(listProducts)
 
     const handleSearch = () => {
         if (search.length > 0) {
@@ -142,22 +140,12 @@ export function Topbar() {
                                     </Ul>
                                 ) : (
                                     <Ul>
-                                        {items.map((item: any) => (
-                                            <li
-                                                key={item.id}
-                                                className="my-6 hover:bg-gray-50 p-3 cursor-pointer"
-                                            >
-                                                <div className="flex flex-col lg:flex-row items-center  gap-10 ">
-                                                    <div className="flex-1 max-w-[80px] min-w-[80px] h-[80px] rounded bg-gray-100"></div>
-
-                                                    <div className="w-full bg-gray-100 p-2 "></div>
-                                                </div>
-                                            </li>
-                                        ))}
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <span>Carregando...</span>
+                                        </div>
                                     </Ul>
                                 ))
                         }
-
                     </div>
                 </Search>
 

@@ -154,7 +154,7 @@ export const Ul = styled('ul', {
     boxShadow: '0px 5px 10px 2px #EBEEF3',
     borderRadius: '0 0 5px 5px',
     width: '290px',
-    padding: '0 16px 2px',
+    padding: '0 16px 4px',
     listStyle: 'none',
 
     variants: {
@@ -191,3 +191,4 @@ export const Ul = styled('ul', {
         }
     }
 })
+
