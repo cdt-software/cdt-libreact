@@ -25,9 +25,15 @@ export function Topbar({ locations, pageName = "Nome da página atual", srcAvart
     const [search, setSearch] = useState('');
     const [items, setItems] = useState(locations === undefined ? dataItems : locations);
     const [loading, setLoading] = useState(false);
-  
+    const [lastUpdateValue, setLastUpdateValue] = useState(window.localStorage.getItem('LAST_UPDATE_VALUE'))
+
+    const currentPage = window.location.pathname === '/' || window.location.pathname === '/iframe.html' ? 'Home' : window.location.pathname.replace('/', '')
+    const currentHours = new Date().getHours();
+    const currentTimeAndLastUpdate = currentHours - Number(lastUpdateValue)
+
     function updatingCurrentPage() {
         window.location.reload()
+        window.localStorage.setItem('LAST_UPDATE_VALUE', String(currentHours))
     }
 
     const handleSearch = () => {
@@ -69,13 +75,15 @@ export function Topbar({ locations, pageName = "Nome da página atual", srcAvart
                 </h1>
                 <div>
                     <p>
-                        Página anterior
+                        <a href="javascript:history.back()">
+                            Página anterior
+                        </a>
                     </p>
                     <p>
                         &gt;
                     </p>
                     <p>
-                        Página atual
+                        {currentPage}
                     </p>
 
                 </div>
@@ -88,7 +96,10 @@ export function Topbar({ locations, pageName = "Nome da página atual", srcAvart
                         onClick={updatingCurrentPage}
                         title='Atualizar'
                     />
-                    <span>Atualizado recentemente</span>
+                    <span>
+                        Atualizado
+                        {currentTimeAndLastUpdate == 0 ? ' recentemente' : ` há ${currentTimeAndLastUpdate} ${currentTimeAndLastUpdate > 1 ? ' horas' : ' hora'}`}
+                    </span>
                 </div>
 
                 <Search>

@@ -46,6 +46,16 @@ export const ContainerTitle = styled('div', {
 
             '&:nth-child(3)': {
                 color: '#0D47A1',
+            },
+
+            a: {
+                textDecoration: 'none',
+                color: "$grayRiver700",
+
+                '&:hover': {
+                    textDecoration: 'underline',
+                    color: '#0D47A1',
+                }
             }
 
 

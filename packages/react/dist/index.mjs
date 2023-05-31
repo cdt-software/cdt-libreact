@@ -1134,6 +1134,14 @@ var ContainerTitle2 = styled("div", {
       color: "$grayRiver700",
       "&:nth-child(3)": {
         color: "#0D47A1"
+      },
+      a: {
+        textDecoration: "none",
+        color: "$grayRiver700",
+        "&:hover": {
+          textDecoration: "underline",
+          color: "#0D47A1"
+        }
       }
     }
   }
@@ -1285,8 +1293,13 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
   const [search, setSearch] = useState3("");
   const [items, setItems] = useState3(locations === void 0 ? dataItems : locations);
   const [loading, setLoading] = useState3(false);
+  const [lastUpdateValue, setLastUpdateValue] = useState3(window.localStorage.getItem("LAST_UPDATE_VALUE"));
+  const currentPage = window.location.pathname === "/" || window.location.pathname === "/iframe.html" ? "Home" : window.location.pathname.replace("/", "");
+  const currentHours = (/* @__PURE__ */ new Date()).getHours();
+  const currentTimeAndLastUpdate = currentHours - Number(lastUpdateValue);
   function updatingCurrentPage() {
     window.location.reload();
+    window.localStorage.setItem("LAST_UPDATE_VALUE", String(currentHours));
   }
   const handleSearch = () => {
     if (search.length > 0) {
@@ -1320,9 +1333,9 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
     /* @__PURE__ */ jsxs6(ContainerTitle2, { children: [
       /* @__PURE__ */ jsx8("h1", { children: pageName }),
       /* @__PURE__ */ jsxs6("div", { children: [
-        /* @__PURE__ */ jsx8("p", { children: "P\xE1gina anterior" }),
+        /* @__PURE__ */ jsx8("p", { children: /* @__PURE__ */ jsx8("a", { href: "javascript:history.back()", children: "P\xE1gina anterior" }) }),
         /* @__PURE__ */ jsx8("p", { children: ">" }),
-        /* @__PURE__ */ jsx8("p", { children: "P\xE1gina atual" })
+        /* @__PURE__ */ jsx8("p", { children: currentPage })
       ] })
     ] }),
     /* @__PURE__ */ jsxs6(ContainerSearch, { children: [
@@ -1335,7 +1348,10 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
             title: "Atualizar"
           }
         ),
-        /* @__PURE__ */ jsx8("span", { children: "Atualizado recentemente" })
+        /* @__PURE__ */ jsxs6("span", { children: [
+          "Atualizado",
+          currentTimeAndLastUpdate == 0 ? " recentemente" : ` h\xE1 ${currentTimeAndLastUpdate} ${currentTimeAndLastUpdate > 1 ? " horas" : " hora"}`
+        ] })
       ] }),
       /* @__PURE__ */ jsx8(Search, { children: /* @__PURE__ */ jsxs6("div", { children: [
         /* @__PURE__ */ jsx8(MagnifyingGlassIcon, { width: 16 }),
