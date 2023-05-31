@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 2.0.7
+
+### Patch Changes
+
+- fix: componente topbar
+
 ## 2.0.6
 
 ### Patch Changes

@@ -54,10 +54,6 @@ export function Topbar({ locations, pageName = "Nome da página atual", srcAvart
         setItems([]);
     };
 
-    const getProducts = async (values: any) => {
-        console.log(values)
-    };
-
     const handleDeleteItems = () => {
         setSearch('');
         setItems([]);
