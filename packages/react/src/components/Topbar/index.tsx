@@ -17,13 +17,18 @@ import { Avatar } from '../Avatar';
 interface TopbarProps {
     locations: any
     pageName: string;
+    srcAvart: string;
 }
 
-export function Topbar({ locations, pageName = "Nome da página atual" }: TopbarProps) {
+export function Topbar({ locations, pageName = "Nome da página atual", srcAvart }: TopbarProps) {
     const [listProducts, setListProducts] = useState(locations === undefined ? dataItems : locations);
     const [search, setSearch] = useState('');
     const [items, setItems] = useState(locations === undefined ? dataItems : locations);
     const [loading, setLoading] = useState(false);
+  
+    function updatingCurrentPage() {
+        window.location.reload()
+    }
 
     const handleSearch = () => {
         if (search.length > 0) {
@@ -80,10 +85,10 @@ export function Topbar({ locations, pageName = "Nome da página atual" }: Topbar
                 <div>
                     <ArrowPathIcon
                         width={16}
-                        onClick={() => console.log('atualizar')}
+                        onClick={updatingCurrentPage}
                         title='Atualizar'
                     />
-                    <span>Atualizado há 2 horas</span>
+                    <span>Atualizado recentemente</span>
                 </div>
 
                 <Search>
@@ -154,7 +159,9 @@ export function Topbar({ locations, pageName = "Nome da página atual" }: Topbar
                     </div>
                 </Search>
 
-                <Avatar />
+                <Avatar
+                    src={srcAvart}
+                />
 
             </ContainerSearch>
 

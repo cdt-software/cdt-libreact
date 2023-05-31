@@ -1330,11 +1330,14 @@ var dataItems = [
 
 // src/components/Topbar/index.tsx
 var import_jsx_runtime8 = require("react/jsx-runtime");
-function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
+function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
   const [listProducts, setListProducts] = (0, import_react6.useState)(locations === void 0 ? dataItems : locations);
   const [search, setSearch] = (0, import_react6.useState)("");
   const [items, setItems] = (0, import_react6.useState)(locations === void 0 ? dataItems : locations);
   const [loading, setLoading] = (0, import_react6.useState)(false);
+  function updatingCurrentPage() {
+    window.location.reload();
+  }
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
@@ -1378,11 +1381,11 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
           import_solid5.ArrowPathIcon,
           {
             width: 16,
-            onClick: () => console.log("atualizar"),
+            onClick: updatingCurrentPage,
             title: "Atualizar"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Atualizado h\xE1 2 horas" })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Atualizado recentemente" })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Search, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_solid5.MagnifyingGlassIcon, { width: 16 }),
@@ -1425,7 +1428,12 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
           );
         }) }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Ul, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Carregando..." }) }) })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Avatar2, {})
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+        Avatar2,
+        {
+          src: srcAvart
+        }
+      )
     ] })
   ] });
 }

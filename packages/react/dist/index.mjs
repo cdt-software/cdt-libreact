@@ -1280,11 +1280,14 @@ var dataItems = [
 
 // src/components/Topbar/index.tsx
 import { jsx as jsx8, jsxs as jsxs6 } from "react/jsx-runtime";
-function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
+function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
   const [listProducts, setListProducts] = useState3(locations === void 0 ? dataItems : locations);
   const [search, setSearch] = useState3("");
   const [items, setItems] = useState3(locations === void 0 ? dataItems : locations);
   const [loading, setLoading] = useState3(false);
+  function updatingCurrentPage() {
+    window.location.reload();
+  }
   const handleSearch = () => {
     if (search.length > 0) {
       setLoading(false);
@@ -1328,11 +1331,11 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
           ArrowPathIcon,
           {
             width: 16,
-            onClick: () => console.log("atualizar"),
+            onClick: updatingCurrentPage,
             title: "Atualizar"
           }
         ),
-        /* @__PURE__ */ jsx8("span", { children: "Atualizado h\xE1 2 horas" })
+        /* @__PURE__ */ jsx8("span", { children: "Atualizado recentemente" })
       ] }),
       /* @__PURE__ */ jsx8(Search, { children: /* @__PURE__ */ jsxs6("div", { children: [
         /* @__PURE__ */ jsx8(MagnifyingGlassIcon, { width: 16 }),
@@ -1375,7 +1378,12 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual" }) {
           );
         }) }) : /* @__PURE__ */ jsx8(Ul, { children: /* @__PURE__ */ jsx8("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsx8("span", { children: "Carregando..." }) }) })
       ] }) }),
-      /* @__PURE__ */ jsx8(Avatar2, {})
+      /* @__PURE__ */ jsx8(
+        Avatar2,
+        {
+          src: srcAvart
+        }
+      )
     ] })
   ] });
 }
