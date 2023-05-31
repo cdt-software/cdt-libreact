@@ -1,5 +1,11 @@
 # @cdt-ui/tokens
 
+## 1.1.6
+
+### Patch Changes
+
+- melhorias no component topbar
+
 ## 1.1.5
 
 ### Patch Changes

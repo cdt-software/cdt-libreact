@@ -1,5 +1,11 @@
 # @cdt-ui/ts-config
 
+## 1.0.5
+
+### Patch Changes
+
+- melhorias no component topbar
+
 ## 1.0.4
 
 ### Patch Changes
