@@ -443,17 +443,15 @@ var import_react2 = require("react");
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   position: "relative",
-  width: 382,
+  width: "100%",
   height: 50,
   variants: {
     size: {
-      sm: {
-        width: "100%",
-        height: 50
+      full: {
+        minWidth: "100%"
       },
       md: {
-        width: 382,
-        height: 50
+        minWidth: 382
       }
     }
   },
@@ -476,14 +474,14 @@ var Input = styled("input", {
     translate: "0px -36px",
     fontSize: "$sm",
     fontWeight: "$semiBold",
-    background: "$white"
+    background: "#ffffff"
   },
   "&:focus ~ span": {
     color: "$blue800",
     translate: "0px -36px",
     fontSize: "$md",
     fontWeight: "$semiBold",
-    background: "$white"
+    background: "#ffffff"
   },
   "&:focus": {
     border: "1px solid $blue800"
@@ -1326,7 +1324,7 @@ function Topbar({ locations, pageName = "Nome da p\xE1gina atual", srcAvart }) {
   const [lastUpdateValue, setLastUpdateValue] = (0, import_react6.useState)(window.localStorage.getItem("LAST_UPDATE_VALUE"));
   const currentPage = window.location.pathname === "/" || window.location.pathname === "/iframe.html" ? "Home" : window.location.pathname.replace("/", "");
   const currentHours = (/* @__PURE__ */ new Date()).getHours();
-  const currentTimeAndLastUpdate = currentHours - Number(lastUpdateValue);
+  const currentTimeAndLastUpdate = Math.abs(currentHours - Number(lastUpdateValue));
   function updatingCurrentPage() {
     window.location.reload();
     window.localStorage.setItem("LAST_UPDATE_VALUE", String(currentHours));

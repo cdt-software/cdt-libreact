@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Box, TextInput, TextInputProps} from '@cdt-ui/react'
+import { Box, TextInput, TextInputProps } from '@cdt-ui/react'
 
 export default {
     title: 'Form/Text Input',
@@ -13,7 +13,7 @@ export default {
                 </Box>
             )
         }
-    ]
+    ],
 } as Meta<TextInputProps>
 
 export const Primary: StoryObj<TextInputProps> = {}

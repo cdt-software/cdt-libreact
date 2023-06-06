@@ -2,20 +2,18 @@ import { styled } from '../../styles'
 
 export const TextInputContainer = styled('div', {
   position: 'relative',
-  width: 382,
+  width: '100%',
   height: 50,
 
   variants: {
     size: {
-      sm: {
-        width: '100%',
-        height: 50,
+      full: {
+        minWidth: '100%',
       },
       md: {
-        width: 382,
-        height: 50,
+        minWidth: 382,
       },
-    },
+    }
   },
 
   defaultVariants: {
@@ -39,7 +37,7 @@ export const Input = styled('input', {
     translate: '0px -36px',
     fontSize: '$sm',
     fontWeight: '$semiBold',
-    background: '$white',
+    background: '#ffffff',
   },
 
   '&:focus ~ span': {
@@ -47,7 +45,7 @@ export const Input = styled('input', {
     translate: '0px -36px',
     fontSize: '$md',
     fontWeight: '$semiBold',
-    background: '$white',
+    background: '#ffffff',
   },
 
   '&:focus': {

@@ -29,7 +29,7 @@ export function Topbar({ locations, pageName = "Nome da página atual", srcAvart
 
     const currentPage = window.location.pathname === '/' || window.location.pathname === '/iframe.html' ? 'Home' : window.location.pathname.replace('/', '')
     const currentHours = new Date().getHours();
-    const currentTimeAndLastUpdate = currentHours - Number(lastUpdateValue)
+    const currentTimeAndLastUpdate = Math.abs(currentHours - Number(lastUpdateValue)) 
 
     function updatingCurrentPage() {
         window.location.reload()
