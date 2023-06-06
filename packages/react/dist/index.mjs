@@ -394,20 +394,7 @@ import { forwardRef } from "react";
 var TextInputContainer = styled("div", {
   position: "relative",
   width: "100%",
-  height: 50,
-  variants: {
-    size: {
-      full: {
-        minWidth: "100%"
-      },
-      md: {
-        minWidth: 382
-      }
-    }
-  },
-  defaultVariants: {
-    size: "md"
-  }
+  height: 50
 });
 var Input = styled("input", {
   width: "100%",
@@ -428,6 +415,12 @@ var Input = styled("input", {
   },
   "&:focus ~ span": {
     color: "$blue800",
+    translate: "0px -36px",
+    fontSize: "$md",
+    fontWeight: "$semiBold",
+    background: "#ffffff"
+  },
+  "&::placeholder-shown ~ span": {
     translate: "0px -36px",
     fontSize: "$md",
     fontWeight: "$semiBold",

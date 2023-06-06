@@ -1,5 +1,17 @@
 # @cdt-ui/react
 
+## 2.0.9
+
+### Patch Changes
+
+- making adjustments to the TextInput component
+
+## 2.0.8
+
+### Patch Changes
+
+- TextInput component improvements
+
 ## 2.0.7
 
 ### Patch Changes
