@@ -10,7 +10,7 @@ import {
 } from './styles'
 
 interface SidebarProps {
-  links: []
+  links: any
 }
 
 export function Sidebar({ links }: SidebarProps) {
@@ -61,7 +61,7 @@ export function Sidebar({ links }: SidebarProps) {
                 )
               })
               :
-              links.map((item, index) => {
+              links.map((item: any, index: any) => {
                 return (
                   <NavLink
                     key={index}

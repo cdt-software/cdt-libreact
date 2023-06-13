@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 4.0.0
+
+### Major Changes
+
+- reset in Sidebar component
+
 ## 3.0.0
 
 ### Major Changes
