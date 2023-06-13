@@ -345,25 +345,31 @@ var Button = styled("button", {
     backgroundColor: "$gray400",
     cursor: "not-allowed"
   },
+  "&:not([disabled]):hover": {
+    backgroundColor: "$blue700"
+  },
   variants: {
     variant: {
       primary: {
         backgroundColor: "$blue600",
         color: "$white",
-        "&:not(disabled):hover": {
+        "&:not([disabled]):hover": {
           backgroundColor: "$blue700"
         }
       },
       secondary: {
         backgroundColor: "$gray400",
         color: "$white",
-        cursor: "not-allowed"
+        cursor: "not-allowed",
+        "&:not([disabled]):hover": {
+          backgroundColor: "$gray400"
+        }
       },
       tertiary: {
         backgroundColor: "none",
         color: "$gray800",
         border: "1px solid $gray300",
-        "&:not(disabled):hover": {
+        "&:not([disabled]):hover": {
           backgroundColor: "$gray200",
           border: "none"
         }

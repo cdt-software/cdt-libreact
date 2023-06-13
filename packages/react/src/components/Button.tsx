@@ -29,13 +29,17 @@ export const Button = styled('button', {
     cursor: 'not-allowed',
   },
 
+  '&:not([disabled]):hover': {
+    backgroundColor: '$blue700',
+  },
+
   variants: {
     variant: {
       primary: {
         backgroundColor: '$blue600',
         color: '$white',
 
-        '&:not(disabled):hover': {
+        '&:not([disabled]):hover': {
           backgroundColor: '$blue700',
         },
       },
@@ -44,6 +48,10 @@ export const Button = styled('button', {
         backgroundColor: '$gray400',
         color: '$white',
         cursor: 'not-allowed',
+
+        '&:not([disabled]):hover': {
+          backgroundColor: '$gray400',
+        },
       },
 
       tertiary: {
@@ -51,7 +59,7 @@ export const Button = styled('button', {
         color: '$gray800',
         border: '1px solid $gray300',
 
-        '&:not(disabled):hover': {
+        '&:not([disabled]):hover': {
           backgroundColor: '$gray200',
           border: 'none',
         },

@@ -1,6 +1,6 @@
 {
   "name": "@cdt-ui/react",
-  "version": "2.0.9",
+  "version": "3.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -28,6 +28,7 @@
     "@radix-ui/react-avatar": "^1.0.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@stitches/react": "^1.2.8",
+    "formik": "^2.4.1",
     "react-router-dom": "^6.11.2"
   }
 }

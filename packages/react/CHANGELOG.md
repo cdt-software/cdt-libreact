@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 3.0.0
+
+### Major Changes
+
+- change in hover on button
+
 ## 2.0.9
 
 ### Patch Changes
