@@ -23,18 +23,12 @@ type Props = {
 }
 
 interface NavLinkProps {
-  item: {
-    children?: Props[];
-    icon: string;
-    id: number;
-    title: string;
-    sectionTitle: string;
-  }
+  item: any;
   collapse: boolean;
 }
 
 export function NavLink({ item, collapse }: NavLinkProps) {
-  const NameIcon = `${item.icon}`
+  const IconeComponente = Icon[item.icon as keyof typeof Icon];
   const [open, setOpen] = useState(false)
   const [openTitleChild, setOpenTitleChild] = useState(false)
   const [showLinkCollapse, setShowLinkCollapse] = useState(false)
@@ -43,7 +37,7 @@ export function NavLink({ item, collapse }: NavLinkProps) {
 
   const menuOpened = (): void => {
     if (item?.children) {
-      item.children.map((child) => {
+      item.children.map((child: any) => {
         if (child.href == asPath) {
           setOpen(true);
         }
@@ -63,7 +57,13 @@ export function NavLink({ item, collapse }: NavLinkProps) {
           <ContainerTitle open={open} onClick={() => setOpen(!open)}>
             <ContainerIcon open={open}>
 
-              <HeartIcon width={20} />
+              {
+                !IconeComponente ?
+                  <Icon.HeartIcon width={20} height={20} />
+                  :
+                  <IconeComponente width={20} height={20} />
+              }
+
 
               <span>{item.title}</span>
             </ContainerIcon>

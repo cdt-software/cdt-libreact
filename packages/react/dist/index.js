@@ -646,7 +646,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Usu\xE1rios",
     title: "Usu\xE1rios",
-    icon: "heart.svg",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Adicionar",
@@ -662,7 +662,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Segmentos",
     title: "Segmenta\xE7\xE3o",
-    icon: "KeyIcon",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Cidade",
@@ -682,7 +682,7 @@ var menuLinks = [
     id: 3,
     sectionTitle: "Estabelecimentos",
     title: "Estabelecimento",
-    icon: "UserGroup",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Adicionar",
@@ -722,7 +722,7 @@ var menuLinks = [
     id: 4,
     sectionTitle: "Planos",
     title: "Planos",
-    icon: "notebook.svg",
+    icon: "Check",
     children: [
       {
         title: "Adicionar",
@@ -936,7 +936,7 @@ var ContainerLinkCollapse = styled("div", {
     position: "relative",
     color: "$grayRiver600",
     textDecoration: "none",
-    fontSize: "$sm",
+    fontSize: "$md",
     padding: "10px 15px",
     transition: "background 100ms",
     "&:hover": {
@@ -1003,9 +1003,10 @@ var ChildBorder = styled("div", {
 // src/components/Sidebar/NavLink.tsx
 var import_solid3 = require("@heroicons/react/24/solid");
 var import_outline = require("@heroicons/react/24/outline");
+var Icon = __toESM(require("@heroicons/react/24/outline"));
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function NavLink({ item, collapse }) {
-  const NameIcon = `${item.icon}`;
+  const IconeComponente = Icon[item.icon];
   const [open, setOpen] = (0, import_react4.useState)(false);
   const [openTitleChild, setOpenTitleChild] = (0, import_react4.useState)(false);
   const [showLinkCollapse, setShowLinkCollapse] = (0, import_react4.useState)(false);
@@ -1028,7 +1029,7 @@ function NavLink({ item, collapse }) {
       /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Li, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
           /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ContainerIcon, { open, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_outline.HeartIcon, { width: 20 }),
+            !IconeComponente ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Icon.HeartIcon, { width: 20, height: 20 }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(IconeComponente, { width: 20, height: 20 }),
             /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: item.title })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(

@@ -596,7 +596,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Usu\xE1rios",
     title: "Usu\xE1rios",
-    icon: "heart.svg",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Adicionar",
@@ -612,7 +612,7 @@ var menuLinks = [
     id: 2,
     sectionTitle: "Segmentos",
     title: "Segmenta\xE7\xE3o",
-    icon: "KeyIcon",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Cidade",
@@ -632,7 +632,7 @@ var menuLinks = [
     id: 3,
     sectionTitle: "Estabelecimentos",
     title: "Estabelecimento",
-    icon: "UserGroup",
+    icon: "AcademicCapIcon",
     children: [
       {
         title: "Adicionar",
@@ -672,7 +672,7 @@ var menuLinks = [
     id: 4,
     sectionTitle: "Planos",
     title: "Planos",
-    icon: "notebook.svg",
+    icon: "Check",
     children: [
       {
         title: "Adicionar",
@@ -886,7 +886,7 @@ var ContainerLinkCollapse = styled("div", {
     position: "relative",
     color: "$grayRiver600",
     textDecoration: "none",
-    fontSize: "$sm",
+    fontSize: "$md",
     padding: "10px 15px",
     transition: "background 100ms",
     "&:hover": {
@@ -953,9 +953,10 @@ var ChildBorder = styled("div", {
 // src/components/Sidebar/NavLink.tsx
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import * as Icon from "@heroicons/react/24/outline";
 import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs4 } from "react/jsx-runtime";
 function NavLink({ item, collapse }) {
-  const NameIcon = `${item.icon}`;
+  const IconeComponente = Icon[item.icon];
   const [open, setOpen] = useState(false);
   const [openTitleChild, setOpenTitleChild] = useState(false);
   const [showLinkCollapse, setShowLinkCollapse] = useState(false);
@@ -978,7 +979,7 @@ function NavLink({ item, collapse }) {
       /* @__PURE__ */ jsxs4(Li, { children: [
         /* @__PURE__ */ jsxs4(ContainerTitle, { open, onClick: () => setOpen(!open), children: [
           /* @__PURE__ */ jsxs4(ContainerIcon, { open, children: [
-            /* @__PURE__ */ jsx6(HeartIcon, { width: 20 }),
+            !IconeComponente ? /* @__PURE__ */ jsx6(Icon.HeartIcon, { width: 20, height: 20 }) : /* @__PURE__ */ jsx6(IconeComponente, { width: 20, height: 20 }),
             /* @__PURE__ */ jsx6("span", { children: item.title })
           ] }),
           /* @__PURE__ */ jsx6("div", { style: { transform: open ? "rotate(3.142rad)" : "rotate(0)" }, children: /* @__PURE__ */ jsx6(

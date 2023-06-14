@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 4.0.1
+
+### Patch Changes
+
+- improvements and readjustment in the Sidebar component
+
 ## 4.0.0
 
 ### Major Changes

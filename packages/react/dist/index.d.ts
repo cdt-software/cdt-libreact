@@ -2312,7 +2312,7 @@ declare namespace Checkbox {
 }
 
 interface SidebarProps {
-    links: [];
+    links: any;
 }
 declare function Sidebar({ links }: SidebarProps): react_jsx_runtime.JSX.Element;
 

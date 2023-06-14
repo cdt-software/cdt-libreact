@@ -3,7 +3,7 @@ export const menuLinks = [
     id: 2,
     sectionTitle: 'Usuários',
     title: 'Usuários',
-    icon: 'heart.svg',
+    icon: 'AcademicCapIcon',
     children: [
       {
         title: 'Adicionar',
@@ -19,7 +19,7 @@ export const menuLinks = [
     id: 2,
     sectionTitle: 'Segmentos',
     title: 'Segmentação',
-    icon: 'KeyIcon',
+    icon: 'AcademicCapIcon',
     children: [
       {
         title: 'Cidade',
@@ -40,7 +40,7 @@ export const menuLinks = [
     id: 3,
     sectionTitle: 'Estabelecimentos',
     title: 'Estabelecimento',
-    icon: 'UserGroup',
+    icon: 'AcademicCapIcon',
     children: [
       {
         title: 'Adicionar',
@@ -80,7 +80,7 @@ export const menuLinks = [
     id: 4,
     sectionTitle: 'Planos',
     title: 'Planos',
-    icon: 'notebook.svg',
+    icon: 'Check',
     children: [
       {
         title: 'Adicionar',

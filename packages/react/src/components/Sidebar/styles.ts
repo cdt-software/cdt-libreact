@@ -179,12 +179,13 @@ export const ContainerLinkCollapse = styled('div', {
     position: 'relative',
     color: '$grayRiver600',
     textDecoration: 'none',
-    fontSize: '$sm',
+    fontSize: '$md',
     padding: '10px 15px',
     transition: 'background 100ms',
   
     '&:hover': {
       backgroundColor: '#0D47A133',
+
     },
   }
 })
