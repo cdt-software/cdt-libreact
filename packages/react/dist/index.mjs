@@ -698,10 +698,11 @@ var menuLinks = [
 import { useEffect, useState } from "react";
 
 // src/components/Sidebar/ActiveLink.tsx
+import { Link, BrowserRouter } from "react-router-dom";
 import { cloneElement } from "react";
 import { jsx as jsx5 } from "react/jsx-runtime";
 function ActiveLink(_a) {
-  var _b = _a, { href, children, alertMessageToCompleteProfile = false, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "alertMessageToCompleteProfile", "shouldMatchExactHref"]);
+  var _b = _a, { href, children, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "shouldMatchExactHref"]);
   const asPath = window.location.pathname;
   let isActive = false;
   if (shouldMatchExactHref && asPath === href) {
@@ -710,8 +711,8 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ jsx5(
-    "a",
+  return /* @__PURE__ */ jsx5(BrowserRouter, { children: /* @__PURE__ */ jsx5(
+    Link,
     __spreadProps(__spreadValues({
       style: isActive ? {
         color: "#1565C0",
@@ -719,13 +720,13 @@ function ActiveLink(_a) {
       } : {
         color: "#57667A"
       },
-      href
+      to: href
     }, rest), {
       children: cloneElement(children, {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  );
+  ) });
 }
 
 // src/components/Sidebar/styles.ts
@@ -952,7 +953,6 @@ var ChildBorder = styled("div", {
 
 // src/components/Sidebar/NavLink.tsx
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { HeartIcon } from "@heroicons/react/24/outline";
 import * as Icon from "@heroicons/react/24/outline";
 import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs4 } from "react/jsx-runtime";
 function NavLink({ item, collapse }) {
@@ -1017,7 +1017,7 @@ function NavLink({ item, collapse }) {
         showLinkCollapse,
         onClick: () => setShowLinkCollapse(!showLinkCollapse),
         children: [
-          /* @__PURE__ */ jsx6(HeartIcon, {}),
+          !IconeComponente ? /* @__PURE__ */ jsx6(Icon.HeartIcon, { width: 20, height: 20 }) : /* @__PURE__ */ jsx6(IconeComponente, { width: 20, height: 20 }),
           /* @__PURE__ */ jsx6(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ jsx6(
             ActiveLink,
             {

@@ -748,10 +748,11 @@ var menuLinks = [
 var import_react4 = require("react");
 
 // src/components/Sidebar/ActiveLink.tsx
+var import_react_router_dom = require("react-router-dom");
 var import_react3 = require("react");
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function ActiveLink(_a) {
-  var _b = _a, { href, children, alertMessageToCompleteProfile = false, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "alertMessageToCompleteProfile", "shouldMatchExactHref"]);
+  var _b = _a, { href, children, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "shouldMatchExactHref"]);
   const asPath = window.location.pathname;
   let isActive = false;
   if (shouldMatchExactHref && asPath === href) {
@@ -760,8 +761,8 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-    "a",
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_router_dom.BrowserRouter, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    import_react_router_dom.Link,
     __spreadProps(__spreadValues({
       style: isActive ? {
         color: "#1565C0",
@@ -769,13 +770,13 @@ function ActiveLink(_a) {
       } : {
         color: "#57667A"
       },
-      href
+      to: href
     }, rest), {
       children: (0, import_react3.cloneElement)(children, {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  );
+  ) });
 }
 
 // src/components/Sidebar/styles.ts
@@ -1002,7 +1003,6 @@ var ChildBorder = styled("div", {
 
 // src/components/Sidebar/NavLink.tsx
 var import_solid3 = require("@heroicons/react/24/solid");
-var import_outline = require("@heroicons/react/24/outline");
 var Icon = __toESM(require("@heroicons/react/24/outline"));
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function NavLink({ item, collapse }) {
@@ -1067,7 +1067,7 @@ function NavLink({ item, collapse }) {
         showLinkCollapse,
         onClick: () => setShowLinkCollapse(!showLinkCollapse),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_outline.HeartIcon, {}),
+          !IconeComponente ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Icon.HeartIcon, { width: 20, height: 20 }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(IconeComponente, { width: 20, height: 20 }),
           /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ContainerLinkCollapse, { showLinkCollapse, children: item.children.map((child, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             ActiveLink,
             {

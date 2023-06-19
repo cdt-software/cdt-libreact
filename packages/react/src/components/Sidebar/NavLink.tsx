@@ -107,7 +107,13 @@ export function NavLink({ item, collapse }: NavLinkProps) {
         showLinkCollapse={showLinkCollapse}
         onClick={() => setShowLinkCollapse(!showLinkCollapse)}
       >
-        <HeartIcon />
+        {
+          !IconeComponente ?
+            <Icon.HeartIcon width={20} height={20} />
+            :
+            <IconeComponente width={20} height={20} />
+        }
+
 
         <ContainerLinkCollapse showLinkCollapse={showLinkCollapse}>
           {
@@ -122,8 +128,6 @@ export function NavLink({ item, collapse }: NavLinkProps) {
           }
         </ContainerLinkCollapse>
       </ContainerIconCollapse>
-
-
     )
   }
 }

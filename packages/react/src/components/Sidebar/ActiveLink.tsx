@@ -1,14 +1,13 @@
-import { fontWeights } from '@cdt-ui/tokens';
+import { Link, BrowserRouter } from 'react-router-dom';
 import { cloneElement, ReactElement } from 'react';
 
 interface ActiveLinkProps {
     children: ReactElement;
     shouldMatchExactHref?: boolean;
-    alertMessageToCompleteProfile?: boolean;
     href: string;
 }
 
-export function ActiveLink({ href, children, alertMessageToCompleteProfile = false, shouldMatchExactHref = false, ...rest }: ActiveLinkProps) {
+export function ActiveLink({ href, children, shouldMatchExactHref = false, ...rest }: ActiveLinkProps) {
     const asPath = window.location.pathname
 
     let isActive = false;
@@ -24,23 +23,25 @@ export function ActiveLink({ href, children, alertMessageToCompleteProfile = fal
         isActive = true;
     }
     return (
-        <a
-            style={
-                isActive ? {
-                    color: "#1565C0",
-                    fontWeight: '600'
+        <BrowserRouter>
+            <Link
+                style={
+                    isActive ? {
+                        color: "#1565C0",
+                        fontWeight: '600'
+                    }
+                        : {
+                            color: "#57667A"
+                        }
                 }
-                : {
-                    color: "#57667A"
-                }
-            }
-            href={href}
-            {...rest}>
-            {cloneElement(children, {
-                className: isActive
-                    ? 'text-red text-sm'
-                    : 'text-sm text-gray-400 hover:text-red',
-            })}
-        </a>
+                to={href}
+                {...rest}>
+                {cloneElement(children, {
+                    className: isActive
+                        ? 'text-red text-sm'
+                        : 'text-sm text-gray-400 hover:text-red',
+                })}
+            </Link>
+        </BrowserRouter>
     );
 }
