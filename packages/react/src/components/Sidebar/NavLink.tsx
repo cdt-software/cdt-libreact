@@ -16,6 +16,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { HeartIcon } from '@heroicons/react/24/outline'
 
 import * as Icon from '@heroicons/react/24/outline'
+import { BrowserRouter } from 'react-router-dom'
 
 type Props = {
   title: string

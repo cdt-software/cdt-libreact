@@ -8,6 +8,7 @@ import {
   ButtonHamburguer,
   ContainerHeaderCollapse,
 } from './styles'
+import { BrowserRouter } from 'react-router-dom'
 
 interface SidebarProps {
   links: any
@@ -48,29 +49,29 @@ export function Sidebar({ links }: SidebarProps) {
 
       <nav>
         <ul>
-          {
-            links === undefined ?
+            {
+              links === undefined ?
 
-              menuLinks.map((item, index) => {
-                return (
-                  <NavLink
-                    key={index}
-                    item={item}
-                    collapse={collapse}
-                  />
-                )
-              })
-              :
-              links.map((item: any, index: any) => {
-                return (
-                  <NavLink
-                    key={index}
-                    item={item}
-                    collapse={collapse}
-                  />
-                )
-              })
-          }
+                menuLinks.map((item, index) => {
+                  return (
+                    <NavLink
+                      key={index}
+                      item={item}
+                      collapse={collapse}
+                    />
+                  )
+                })
+                :
+                links.map((item: any, index: any) => {
+                  return (
+                    <NavLink
+                      key={index}
+                      item={item}
+                      collapse={collapse}
+                    />
+                  )
+                })
+            }
         </ul>
       </nav>
     </Aside>
