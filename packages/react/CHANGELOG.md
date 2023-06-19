@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 4.0.4
+
+### Patch Changes
+
+- fix error sidebar
+
 ## 4.0.3
 
 ### Patch Changes

@@ -698,7 +698,7 @@ var menuLinks = [
 import { useEffect, useState } from "react";
 
 // src/components/Sidebar/ActiveLink.tsx
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 import { cloneElement } from "react";
 import { jsx as jsx5 } from "react/jsx-runtime";
 function ActiveLink(_a) {
@@ -712,7 +712,7 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ jsx5(
+  return /* @__PURE__ */ jsx5(BrowserRouter, { children: /* @__PURE__ */ jsx5(
     Link,
     __spreadProps(__spreadValues({
       style: isActive ? {
@@ -727,7 +727,7 @@ function ActiveLink(_a) {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  );
+  ) });
 }
 
 // src/components/Sidebar/styles.ts

@@ -55,50 +55,50 @@ export function NavLink({ item, collapse }: NavLinkProps) {
       <>
         <SectionTitle>{item.sectionTitle}</SectionTitle>
         <Li>
-          <ContainerTitle open={open} onClick={() => setOpen(!open)}>
-            <ContainerIcon open={open}>
+            <ContainerTitle open={open} onClick={() => setOpen(!open)}>
+              <ContainerIcon open={open}>
 
-              {
-                !IconeComponente ?
-                  <Icon.HeartIcon width={20} height={20} />
-                  :
-                  <IconeComponente width={20} height={20} />
-              }
-
-
-              <span>{item.title}</span>
-            </ContainerIcon>
-
-            <div style={{ transform: open ? 'rotate(3.142rad)' : 'rotate(0)' }}>
-              <ChevronDownIcon
-                width={15}
-                style={
-                  open
-                    ? {
-                      color: '#0D47A1',
-                    }
-                    : {
-                      color: '#B0B9C6',
-                    }
+                {
+                  !IconeComponente ?
+                    <Icon.HeartIcon width={20} height={20} />
+                    :
+                    <IconeComponente width={20} height={20} />
                 }
-              />
-            </div>
-          </ContainerTitle>
 
-          <ContainerChildren open={open}>
-            <ChildBorder></ChildBorder>
-            {item.children!.map((child: any, index: number) => (
-              <ActiveLink
-                key={index}
-                href={child.href}
-              >
-                <>
-                  <div></div>
-                  <span>{child.title}</span>
-                </>
-              </ActiveLink>
-            ))}
-          </ContainerChildren>
+
+                <span>{item.title}</span>
+              </ContainerIcon>
+
+              <div style={{ transform: open ? 'rotate(3.142rad)' : 'rotate(0)' }}>
+                <ChevronDownIcon
+                  width={15}
+                  style={
+                    open
+                      ? {
+                        color: '#0D47A1',
+                      }
+                      : {
+                        color: '#B0B9C6',
+                      }
+                  }
+                />
+              </div>
+            </ContainerTitle>
+
+            <ContainerChildren open={open}>
+              <ChildBorder></ChildBorder>
+              {item.children!.map((child: any, index: number) => (
+                <ActiveLink
+                  key={index}
+                  href={child.href}
+                >
+                  <>
+                    <div></div>
+                    <span>{child.title}</span>
+                  </>
+                </ActiveLink>
+              ))}
+            </ContainerChildren>
         </Li>
       </>
     )

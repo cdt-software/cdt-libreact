@@ -762,7 +762,7 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_router_dom.BrowserRouter, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
     import_react_router_dom.Link,
     __spreadProps(__spreadValues({
       style: isActive ? {
@@ -777,7 +777,7 @@ function ActiveLink(_a) {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  );
+  ) });
 }
 
 // src/components/Sidebar/styles.ts
