@@ -22,33 +22,34 @@ export function Sidebar({ links }: SidebarProps) {
   }
 
   return (
-    <Aside collapse={collapse}>
-      {collapse ? (
-        <>
-          <ContainerHeaderCollapse>
-            <ButtonHamburguer onClick={handleCollapse}>
-              <Bars3Icon />
-            </ButtonHamburguer>
+      <Aside collapse={collapse}>
+        {collapse ? (
+          <>
+            <ContainerHeaderCollapse>
+              <ButtonHamburguer onClick={handleCollapse}>
+                <Bars3Icon />
+              </ButtonHamburguer>
 
-            <RocketLaunchIcon width={18} />
-          </ContainerHeaderCollapse>
-        </>
-      ) : (
-        <>
-          <ContainerHeader>
-            <div>
               <RocketLaunchIcon width={18} />
-              <strong>Base 2 Launch</strong>
-            </div>
-            <ButtonHamburguer onClick={handleCollapse}>
-              <Bars3Icon />
-            </ButtonHamburguer>
-          </ContainerHeader>
-        </>
-      )}
+            </ContainerHeaderCollapse>
+          </>
+        ) : (
+          <>
+            <ContainerHeader>
+              <div>
+                <RocketLaunchIcon width={18} />
+                <strong>Base 2 Launch</strong>
+              </div>
+              <ButtonHamburguer onClick={handleCollapse}>
+                <Bars3Icon />
+              </ButtonHamburguer>
+            </ContainerHeader>
+          </>
+        )}
 
-      <nav>
-        <ul>
+        <nav>
+          <ul>
+
             {
               links === undefined ?
 
@@ -72,8 +73,8 @@ export function Sidebar({ links }: SidebarProps) {
                   )
                 })
             }
-        </ul>
-      </nav>
-    </Aside>
+          </ul>
+        </nav>
+      </Aside>
   )
 }

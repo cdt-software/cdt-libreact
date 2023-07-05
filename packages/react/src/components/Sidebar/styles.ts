@@ -204,6 +204,7 @@ export const SectionTitle = styled('p', {
 export const ContainerChildren = styled('div', {
   height: '100%',
   position: 'relative',
+  border: '1px solid red',
 
   variants: {
     open: {

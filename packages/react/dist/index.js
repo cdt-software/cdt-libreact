@@ -582,8 +582,8 @@ var import_solid2 = require("@heroicons/react/24/solid");
 var Checkbox = __toESM(require("@radix-ui/react-checkbox"));
 var CheckboxContainer = styled(Checkbox.Root, {
   all: "unset",
-  width: 24,
-  height: 24,
+  width: 23,
+  height: 23,
   backgroundColor: "$white",
   borderRadius: "$xs",
   lineHeight: 0,
@@ -748,13 +748,11 @@ var menuLinks = [
 var import_react4 = require("react");
 
 // src/components/Sidebar/ActiveLink.tsx
-var import_react_router_dom = require("react-router-dom");
 var import_react3 = require("react");
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function ActiveLink(_a) {
   var _b = _a, { href, children, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "shouldMatchExactHref"]);
   const asPath = window.location.pathname;
-  console.log(href);
   let isActive = false;
   if (shouldMatchExactHref && asPath === href) {
     isActive = false;
@@ -762,8 +760,8 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_router_dom.BrowserRouter, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-    import_react_router_dom.Link,
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    "a",
     __spreadProps(__spreadValues({
       style: isActive ? {
         color: "#1565C0",
@@ -771,13 +769,13 @@ function ActiveLink(_a) {
       } : {
         color: "#57667A"
       },
-      to: "/"
+      href
     }, rest), {
       children: (0, import_react3.cloneElement)(children, {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  ) });
+  );
 }
 
 // src/components/Sidebar/styles.ts
@@ -958,6 +956,7 @@ var SectionTitle = styled("p", {
 var ContainerChildren = styled("div", {
   height: "100%",
   position: "relative",
+  border: "1px solid red",
   variants: {
     open: {
       true: {

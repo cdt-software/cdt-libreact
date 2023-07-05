@@ -532,8 +532,8 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import * as Checkbox from "@radix-ui/react-checkbox";
 var CheckboxContainer = styled(Checkbox.Root, {
   all: "unset",
-  width: 24,
-  height: 24,
+  width: 23,
+  height: 23,
   backgroundColor: "$white",
   borderRadius: "$xs",
   lineHeight: 0,
@@ -698,13 +698,11 @@ var menuLinks = [
 import { useEffect, useState } from "react";
 
 // src/components/Sidebar/ActiveLink.tsx
-import { Link, BrowserRouter } from "react-router-dom";
 import { cloneElement } from "react";
 import { jsx as jsx5 } from "react/jsx-runtime";
 function ActiveLink(_a) {
   var _b = _a, { href, children, shouldMatchExactHref = false } = _b, rest = __objRest(_b, ["href", "children", "shouldMatchExactHref"]);
   const asPath = window.location.pathname;
-  console.log(href);
   let isActive = false;
   if (shouldMatchExactHref && asPath === href) {
     isActive = false;
@@ -712,8 +710,8 @@ function ActiveLink(_a) {
   if (!shouldMatchExactHref && (asPath.endsWith(String(href)) || asPath.startsWith(String(href)))) {
     isActive = true;
   }
-  return /* @__PURE__ */ jsx5(BrowserRouter, { children: /* @__PURE__ */ jsx5(
-    Link,
+  return /* @__PURE__ */ jsx5(
+    "a",
     __spreadProps(__spreadValues({
       style: isActive ? {
         color: "#1565C0",
@@ -721,13 +719,13 @@ function ActiveLink(_a) {
       } : {
         color: "#57667A"
       },
-      to: "/"
+      href
     }, rest), {
       children: cloneElement(children, {
         className: isActive ? "text-red text-sm" : "text-sm text-gray-400 hover:text-red"
       })
     })
-  ) });
+  );
 }
 
 // src/components/Sidebar/styles.ts
@@ -908,6 +906,7 @@ var SectionTitle = styled("p", {
 var ContainerChildren = styled("div", {
   height: "100%",
   position: "relative",
+  border: "1px solid red",
   variants: {
     open: {
       true: {

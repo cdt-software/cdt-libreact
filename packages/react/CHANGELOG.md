@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 4.0.5
+
+### Patch Changes
+
+- alteçao checkbox
+
 ## 4.0.4
 
 ### Patch Changes
