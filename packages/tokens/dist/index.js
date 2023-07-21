@@ -115,7 +115,17 @@ var colors = {
   error600: "#FC3117",
   error700: "#FC3117",
   error800: "#FC3117",
-  error900: "#C80000"
+  error900: "#C80000",
+  green50: "#e0f3f1",
+  green100: "#b2e0da",
+  green200: "#7fcec3",
+  green300: "#49baaa",
+  green400: "#34ab98",
+  green500: "#2e9b86",
+  green600: "#298e79",
+  green700: "#237d69",
+  green800: "#1e6d5a",
+  green900: "#13513d"
 };
 
 // src/space.ts

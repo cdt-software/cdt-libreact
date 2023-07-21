@@ -1,5 +1,11 @@
 # @cdt-ui/tokens
 
+## 1.1.7
+
+### Patch Changes
+
+- adding the green variant on the button
+
 ## 1.1.6
 
 ### Patch Changes

@@ -1,10 +1,10 @@
 export const colors = {
   white: '#FFFFFF',
   black: '#000000',
-  
+
   linkActive: '#1A0DAB',
   linkVisited: '#681DA8',
-  
+
   blue50: '#E3F2FD',
   blue100: '#BBDEFB',
   blue200: '#90CAF9',
@@ -89,4 +89,15 @@ export const colors = {
   error700: '#FC3117',
   error800: '#FC3117',
   error900: '#C80000',
+
+  green50: '#e0f3f1',
+  green100: '#b2e0da',
+  green200: '#7fcec3',
+  green300: '#49baaa',
+  green400: '#34ab98',
+  green500: '#2e9b86',
+  green600: '#298e79',
+  green700: '#237d69',
+  green800: '#1e6d5a',
+  green900: '#13513d',
 }

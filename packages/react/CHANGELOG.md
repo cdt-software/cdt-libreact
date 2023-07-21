@@ -1,5 +1,11 @@
 # @cdt-ui/react
 
+## 4.0.6
+
+### Patch Changes
+
+- adding the green variant on the button
+
 ## 4.0.5
 
 ### Patch Changes

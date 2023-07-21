@@ -64,6 +64,26 @@ export const Button = styled('button', {
           border: 'none',
         },
       },
+
+      greenDark: {
+        backgroundColor: '$green700',
+        color: '$white',
+
+        '&:not([disabled]):hover': {
+          backgroundColor: '$green800',
+        },
+      },
+
+      greenLight: {
+        backgroundColor: '$green100',
+        color: '$green800',
+
+        '&:not([disabled]):hover': {
+          backgroundColor: '$green200',
+        },
+      },
+
+
     },
 
     size: {

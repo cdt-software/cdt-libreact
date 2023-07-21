@@ -1159,7 +1159,7 @@ declare namespace Avatar {
 }
 
 declare const Button: _stitches_react_types_styled_component.StyledComponent<"button", {
-    variant?: "primary" | "secondary" | "tertiary" | undefined;
+    variant?: "primary" | "secondary" | "tertiary" | "greenDark" | "greenLight" | undefined;
     size?: "md" | "full" | undefined;
 }, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1245,6 +1245,16 @@ declare const Button: _stitches_react_types_styled_component.StyledComponent<"bu
         error700: string;
         error800: string;
         error900: string;
+        green50: string;
+        green100: string;
+        green200: string;
+        green300: string;
+        green400: string;
+        green500: string;
+        green600: string;
+        green700: string;
+        green800: string;
+        green900: string;
     };
     fontSizes: {
         xxs: string;
