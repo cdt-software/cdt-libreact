@@ -1,0 +1,2 @@
+import{S as s}from"./index-420af902.js";import"./index-532c4ca3.js";import"./_commonjsHelpers-042e6b4d.js";import"./extends-98964cd2.js";import"./jsx-runtime-a8c9cf40.js";const d={title:"Sidebar/sidebar ",component:s,args:{},argTypes:{}},r={};var e,a,o;r.parameters={...r.parameters,docs:{...(e=r.parameters)==null?void 0:e.docs,source:{originalSource:"{}",...(o=(a=r.parameters)==null?void 0:a.docs)==null?void 0:o.source}}};const n=["Primary"];export{r as Primary,n as __namedExportsOrder,d as default};
+//# sourceMappingURL=Sidebar.stories-c3fe77a6.js.map
